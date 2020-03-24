@@ -15,9 +15,9 @@ copyright: 'Copyright &copy; 2020 HatLab Team'
 # setting nav and deploy page
 nav:
     - Introduction:
-        - Home: index.md
-        - About: about.md
-    
+        - 基本介绍/Intro: index.md
+        - 内容概述/Summary: summary.md
+        - 关于我们/About: about.md 
         
     - 无线电安全:
 
@@ -27,23 +27,19 @@ nav:
                 - 主动扫描和被动扫描: wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning.md
     
                 
-        - ZigBee 安全:
-            - 概述: index.md
+#        - ZigBee 安全:
+#            - 概述: index.md
 
 
 
 
     - 固件安全:
-        - 概述: index.md
+       - 概述: firmware_security/index.md
 
 
 
-
-
-
-
-    - 硬件安全:
-        - 概述: index.md
+#    - 硬件安全:
+#        - 概述: index.md
 
 
 
@@ -55,7 +51,7 @@ nav:
 theme:
   name: 'material'
   palette:
-    primary: 'Teal'
+    primary: 'Light Blue'
     accent: 'Deep Orange'
   feature:
     tabs: true

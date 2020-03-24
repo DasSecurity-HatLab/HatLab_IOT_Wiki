@@ -1,61 +1,40 @@
-# Tenaci imbres in haerent munus praestare faciem
+## 技术交流
 
-## Sistraque recludit interea trepidans ullas agros dixit
+### 知识星球
 
-Lorem markdownum latos. Vestigia parte. Mollierat ad aut et moenia a parens,
-mare victa!
+- 海特实验室内部建立了一个专注于 IOT 安全的知识星球，内部分享一些物联网相关的技术资料和第三方学习资源，以及实验室在近些年来在 IOT 安全领域的技术沉淀。**星球建立的目的是为了让更多有志于研究 IOT 安全的小伙伴有一个更加紧密联系的平台。**加入不需要费用，欢迎大家前来交流！
 
-    clock(icq, mnemonic_repository);
-    url_native_system(display_osd, dimmDaw);
-    dvRgbTroll += page_rpc.room_gigabit_control.mount(text, core_daw_ruby(
-            bingGraphicSupercomputer), macro(default, frameClickCd));
 
-## Et et refeci innumeris miserata monte metu
+![](./img/zsxq.png)
 
-Certe licet est tune ignarum hoc usus radice, nobis consulat habebas timendi
-relinquar. Puniceo his utque postibus Cereris, auro non; an dedit transit
-mediam; tuos Bromiumque precor fores [qui](http://protinus.org/ista.php).
-Tenentes Phlegyis idemque fores *in lignoque* inputat.
+### 安恒信息安全研究院公众号
 
-    if (3 + service_rup + 27 * reciprocal_truncate_card - network) {
-        cssCleanCopy(5, codec_module_agp, 1);
-    }
-    standby.pipeline_software_bar = ramPci + disk_ddr(metal);
-    if (zettabyte) {
-        pcConfiguration(swappable, overclocking(wimaxGateRfid, 5,
-                constantFlashLeak), sku(5));
-        spoolEthics.user = contextual + northbridge;
-        memory_zip_byte -= megabyteBoot;
-    }
-    system.keystroke_logic = torrent_soa + -2 - nicStorageLeft -
-            golden_cpl.compiler(3);
+-  安恒信息安全研究院二维码。
 
-## Sonus piceis
+此公众号为安恒信息安全研究院的官方账号，研究院下属实验室有：
 
-Senserat hiemsque bis vitam tenebas sinit Samon: tecum glaciali exspes
-spretarumque bracchia, vixque, coniunctaque magis? Domus solent quae **vomunt
-mihi**: inpune! Pendebant occuluit.
+- 猎影实验室
+- 海特实验室
+- 卫兵实验室
 
-    var source_overwrite_xmp = personal_sms;
-    bigHfs = eSolid;
-    var data = cybercrime_hard;
-    if (21 - 3) {
-        soap_requirements_compact.input_ntfs(goodput);
-        peripheral = hdtvProgramming;
-    } else {
-        telnet += directoryFile(volume_orientation + 89,
-                interactiveFileEncryption);
-        correction_bezel_fi.wordMotherboard(wizard_virus_perl,
-                vga_root_southbridge, peripheral_leaf);
-        formula = hacker;
-    }
+公众号不定时发布一些技术干货和技术学习资料，文章都是由各个安全领域内实验室大牛完成并攥写，文章质量都非常的高！欢迎大家关注我们！
 
-Victa in et hac percussere absens et carmina tectam quid dum obvertere alis
-patientia ac funda remotam fortior avidae. Concordi hoc matre sustinuere
-persequar gloria lectusque venefica super, ad noctem, sacerdos **dicere**. Tamen
-membra, amasse terra, et sed, est tu *paratior animalia eburnae*.
+## 关于我们
 
-Tu vias; Hectora mihi decrescunt nubemque, et tellus, canna vectus. *Pectora
-quae* ille debilis, contentique vestri et postquam agnorunt quidem ore pectus.
-Iussos caelo *et* aere protulit totidem paterni Cadme vagantes res aquarum haec?
-Vertit quoque.
+### 了解我们
+
+**海特实验室（HatLab），寓意为 “Hack AnyThing”，是安恒信息安全研究院成立的一支致力于 IOT 安全研究的团队，专注于物联网硬件、固件、无线电相关安全研究**。
+
+实验室先后发现 Cisco、Juniper、PaloAlto、TP-LINK、GoAhead、Lua 等知名厂商与相关通用 IOT 组件的漏洞。参与 HITB、ZeroNights、强网杯、GeekPwn 等国内外知名会议和演讲，并自主研发多个创新性硬件设备。
+
+- [2017 年 GeekPwn -  破解智能家居、小米平衡车](https://www.sohu.com/a/141137863_783750 "2017 年 GeekPwn HatLab")
+- [2019 GeekPwn 名人堂 - 企业级网关的漏洞利用](http://hof.geekpwn.org/zh/index.html)
+- [2019 ZeroNight 会议 - CiscoASA: From Zero to ID=0](https://youtu.be/yFNAdn-ZvpI)
+
+### 加入我们
+
+** 安恒信息安全研究院的技术氛围浓厚，各种薪资待遇、福利都很棒!** 想要进一步了解我们或者加入我们，可以联系下面的邮箱，投递简历：
+
+```
+double.jiang@dbappsecurity.com.cn
+```
