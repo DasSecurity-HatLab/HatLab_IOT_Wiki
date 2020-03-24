@@ -4,6 +4,7 @@ nav:
     - Home: index.md
     - About: about.md
     - License: license.md
+    - My: my.md
 
 theme:
   name: 'material'
