@@ -1,0 +1,937 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="HatLab_IOT_Wiki">
+      
+      
+        <link rel="canonical" href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning/">
+      
+      
+        <meta name="author" content="HatLab Team members">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>主动扫描和被动扫描 - HatLab_IOT_Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#scanning-type" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/" title="HatLab_IOT_Wiki" aria-label="HatLab_IOT_Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">cloud</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              HatLab_IOT_Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                主动扫描和被动扫描
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../.." class="md-tabs__link">
+          Introduction
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Class_of_Device/" class="md-tabs__link md-tabs__link--active">
+          无线电安全
+        </a>
+      
+    </li>
+  
+
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../.." class="md-tabs__link">
+          固件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../.." class="md-tabs__link">
+          硬件安全
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/" title="HatLab_IOT_Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">cloud</i>
+      
+    </a>
+    HatLab_IOT_Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Introduction
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      无线电安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        无线电安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      蓝牙安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        蓝牙安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1-1">
+      基础攻防知识
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-1">
+        基础攻防知识
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Class_of_Device/" title="Class_of_Device" class="md-nav__link">
+      Class_of_Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        主动扫描和被动扫描
+      </label>
+    
+    <a href="./" title="主动扫描和被动扫描" class="md-nav__link md-nav__link--active">
+      主动扫描和被动扫描
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scanning-type" class="md-nav__link">
+    Scanning Type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-scanning-passive-scanning" class="md-nav__link">
+    Active Scanning 与 Passive Scanning 的隐蔽性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    解析扫描结果
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-scanning-passive-scanning_1" class="md-nav__link">
+    实战中 Active Scanning 不一定比 Passive Scanning 更有效
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      ZigBee 安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        ZigBee 安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      固件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        固件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      硬件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        硬件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scanning-type" class="md-nav__link">
+    Scanning Type
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-scanning-passive-scanning" class="md-nav__link">
+    Active Scanning 与 Passive Scanning 的隐蔽性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    解析扫描结果
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-scanning-passive-scanning_1" class="md-nav__link">
+    实战中 Active Scanning 不一定比 Passive Scanning 更有效
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>主动扫描和被动扫描</h1>
+                
+                <blockquote>
+<p>Sourcell@海特实验室</p>
+</blockquote>
+<p>BLE (Bluetooth Low Energy) 设备可以通过扫描发现周围的其他 BLE 设备。当 BLE 设备执行扫描时便处在 scanning state。该状态是 BLE 设备在 LL (Link Layer) 的状态之一。它与其他几种 LL 状态构成了如下状态机：</p>
+<p><img alt="" src="../img/pic2.png" /></p>
+<p>处于 scanning state 的 BLE 设备被称为 scanner。对应的，当 BLE 设备想让其他设备发现自己时会处在 advertising state。此时 BLE 设备被称为 advertiser。</p>
+<h2 id="scanning-type">Scanning Type<a class="headerlink" href="#scanning-type" title="Permanent link">&para;</a></h2>
+<p>BLE 设备主要可执行两种扫描 active scanning 和 passive scanning（更复杂的扫描情况可参考 ref 2）。具体使用何种扫描方式由 <code>HCI_LE_Set_Scan_Parameters</code> command 控制。该命令中有一个 <code>LE_Scan_Type</code> 参数，当设为 0x00 时执行 passive scanning：</p>
+<div class="codehilite"><pre><span></span><code>Bluetooth HCI Command - LE Set Scan Parameters
+    Command Opcode: LE Set Scan Parameters (0x200b)
+    Parameter Total Length: 7
+    Scan Type: Passive (0x00)
+    Scan Interval: 16 (10 msec)
+    Scan Window: 16 (10 msec)
+    Own Address Type: Public Device Address (0x00)
+    Scan Filter Policy: Accept all advertisements, except directed advertisements not addressed to this device (0x00)
+</code></pre></div>
+
+
+<p>当设为 0x01 时执行 active scanning：</p>
+<div class="codehilite"><pre><span></span><code>Bluetooth HCI Command - LE Set Scan Parameters
+    Command Opcode: LE Set Scan Parameters (0x200b)
+    Parameter Total Length: 7
+    Scan Type: Active (0x01)
+    Scan Interval: 16 (10 msec)
+    Scan Window: 16 (10 msec)
+    Own Address Type: Public Device Address (0x00)
+    Scan Filter Policy: Accept all advertisements, except directed advertisements not addressed to this device (0x00)
+    [Response in frame: 2]
+    [Command-Response Delta: 1.784ms]
+</code></pre></div>
+
+
+<p>其他的值目前均被保留。<code>HCI_LE_Set_Scan_Parameters</code> command 只是配置了扫描的参数，要真正开始扫描还需要发送 <code>HCI_LE_Set_Scan_Enable</code> command：</p>
+<div class="codehilite"><pre><span></span><code>Bluetooth HCI Command - LE Set Scan Enable
+    Command Opcode: LE Set Scan Enable (0x200c)
+    Parameter Total Length: 2
+    Scan Enable: true (0x01)
+    Filter Duplicates: true (0x01)
+</code></pre></div>
+
+
+<p>Passive scanning 的数据流如下[3]：</p>
+<p><img alt="" src="../img/pic3.png" /></p>
+<p>Active scanning 的数据流如下[4]：</p>
+<p><img alt="" src="../img/pic4.png" /></p>
+<h2 id="active-scanning-passive-scanning">Active Scanning 与 Passive Scanning 的隐蔽性<a class="headerlink" href="#active-scanning-passive-scanning" title="Permanent link">&para;</a></h2>
+<p>对于 passive scanning，它仅在 LL 上安静地接收空中飘过的各种 advertising PDUs，绝不会主动发送其他数据。因此 passive scanning 很隐蔽，不会暴露 scanner 的任何信息。</p>
+<p>对于 active scanning，它除了像 passive scanning 一样接收空中的 advertising PDUs，还会主动向 advertiser 发送 <code>SCAN_REQ</code> PDU，然后接收 advertiser 响应的 <code>SCAN_RSP</code> PDU，从而获取 advertiser 更多的信息：</p>
+<p><img alt="" src="../img/pic5.png" /></p>
+<p>不过 <code>SCAN_REQ</code> PDU 会携带 scanner 的 address，即上图中的 <code>ScanA</code> 字段。这可能会暴露 scanner 的身份。因此在执行 active scanning 时，我们最好使用 <code>spooftooph</code> 伪造自己的 BD_ADDR，防止真实 BD_ADDR 被暴露。</p>
+<h2 id="_1">解析扫描结果<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>不论是 active scanning 还是 passive scanning，扫描的结果均以 <code>HCI_LE_Advertising_Report</code> event 的形式返回给 host。该 event 携带的 <code>Event_Type</code> parameter 有如下 5 种取值[5]，说明了扫描结果来自于哪一种 advertising PDU：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">0x00</td>
+<td align="left"><code>ADV_IND</code> PDU</td>
+</tr>
+<tr>
+<td align="left">0x01</td>
+<td align="left"><code>ADV_DIRECT_IND</code> PDU</td>
+</tr>
+<tr>
+<td align="left">0x02</td>
+<td align="left"><code>ADV_SCAN_IND</code> PDU</td>
+</tr>
+<tr>
+<td align="left">0x03</td>
+<td align="left"><code>ADV_NONCONN_IND</code> PDU</td>
+</tr>
+<tr>
+<td align="left">0x04</td>
+<td align="left"><code>SCAN_RSP</code> PDU</td>
+</tr>
+<tr>
+<td align="left">All other values</td>
+<td align="left">RFU</td>
+</tr>
+</tbody>
+</table>
+<p>对于返回的结果，passive scanning 与 active scanning 的区别体现在 <code>SCAN_RSP</code> PDU 上。Active scanning 有能力返回 <code>SCAN_RSP</code> PDU，而 passive scanning 不可能返回 <code>SCAN_RSP</code> PDU。</p>
+<p>具体扫描得到的数据存储在 <code>Data</code> 参数中。该参数也有协议定义的格式，简单的说它是一个 AD (Advertising Data) structure 数组。AD structure 的格式如下[6]：</p>
+<div class="codehilite"><pre><span></span><code>+--------+-------------------+
+| Length | Data              |
++--------+-------------------+
+         | AD Type | AD Data |
+         +-------------------+
+</code></pre></div>
+
+
+<p>其中 AD Type 的含义由 <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile">GAP (Generic Access Profile)</a> 定义。</p>
+<p>这里举两个例子。比如 passive scanning 返回的扫描结果如下：</p>
+<div class="codehilite"><pre><span></span><code>Bluetooth HCI Event - LE Meta
+    Event Code: LE Meta (0x3e)
+    Parameter Total Length: 30
+    Sub Event: LE Advertising Report (0x02)
+    Num Reports: 1
+    Event Type: Connectable Undirected Advertising (0x00)
+    Peer Address Type: Public Device Address (0x00)
+    BD_ADDR: Espressi_9c:07:06 (24:0a:c4:9c:07:06)
+    Data Length: 18
+    Advertising Data
+        Flags
+            Length: 2
+            Type: Flags (0x01)
+            1.   .... = Reserved: 0x0
+            ...0 .... = Simultaneous LE and BR/EDR to Same Device Capable (Host): false (0x0)
+            .... 0... = Simultaneous LE and BR/EDR to Same Device Capable (Controller): false (0x0)
+            .... .1.. = BR/EDR Not Supported: true (0x1)
+            .... ..1. = LE General Discoverable Mode: true (0x1)
+            .... ...0 = LE Limited Discoverable Mode: false (0x0)
+        Tx Power Level
+            Length: 2
+            Type: Tx Power Level (0x0a)
+            Power Level (dBm): -21
+        16-bit Service Class UUIDs
+            Length: 3
+            Type: 16-bit Service Class UUIDs (0x03)
+            UUID 16: Unknown (0x00ff)
+        Device Name: BLECTF
+            Length: 7
+            Type: Device Name (0x09)
+            Device Name: BLECTF
+    RSSI: -65dBm
+</code></pre></div>
+
+
+<p>再比如 Active scanning 因 <code>SCAN_RSP</code> PDU 返回扫描结果如下：</p>
+<div class="codehilite"><pre><span></span><code>Bluetooth HCI Event - LE Meta
+    Event Code: LE Meta (0x3e)
+    Parameter Total Length: 22
+    Sub Event: LE Advertising Report (0x02)
+    Num Reports: 1
+    Event Type: Scan Response (0x04)
+    Peer Address Type: Public Device Address (0x00)
+    BD_ADDR: Espressi_9c:07:06 (24:0a:c4:9c:07:06)
+    Data Length: 10
+    Advertising Data
+        Flags
+            Length: 2
+            Type: Flags (0x01)
+            1.   .... = Reserved: 0x0
+            ...0 .... = Simultaneous LE and BR/EDR to Same Device Capable (Host): false (0x0)
+            .... 0... = Simultaneous LE and BR/EDR to Same Device Capable (Controller): false (0x0)
+            .... .1.. = BR/EDR Not Supported: true (0x1)
+            .... ..1. = LE General Discoverable Mode: true (0x1)
+            .... ...0 = LE Limited Discoverable Mode: false (0x0)
+        Tx Power Level
+            Length: 2
+            Type: Tx Power Level (0x0a)
+            Power Level (dBm): -21
+        16-bit Service Class UUIDs
+            Length: 3
+            Type: 16-bit Service Class UUIDs (0x03)
+            UUID 16: Unknown (0x00ff)
+    RSSI: -68dBm
+</code></pre></div>
+
+
+<h2 id="active-scanning-passive-scanning_1">实战中 Active Scanning 不一定比 Passive Scanning 更有效<a class="headerlink" href="#active-scanning-passive-scanning_1" title="Permanent link">&para;</a></h2>
+<p>在情报收集阶段，我们很关心目标设备的名字。但是厂商给出设备名称的位置是不确定的。设备名称可能位于 advertising data 也可能位于 scan response data。因此有时使用 passive scanning 也能获取目标设备的名字。</p>
+<p>另外，厂商不一定使用 GAP 定义的 AD Type 0x09 (Complete Local Name) 来存储设备的名字。因为 GAP 还定义了 AD Type 0xFF (Manufacturer Specific Data)，厂商也可能把设备的名字放在其中并定义自己的解析规则。</p>
+<p>因此在无法伪装 BD_ADDR 时，可以直接试试 passive scanning 能否解决问题。</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ol>
+<li>BLUETOOTH CORE SPECIFICATION Version 5.2 | Vol 6, Part B page 2857, Figure 1.1: State diagram of the Link Layer state machine</li>
+<li>BLUETOOTH CORE SPECIFICATION Version 5.2 | Vol 6, Part D page 3114, 4 SCANNING STATE</li>
+<li>BLUETOOTH CORE SPECIFICATION Version 5.2 | Vol 6, Part D page 3114, 4.1 PASSIVE SCANNING</li>
+<li>BLUETOOTH CORE SPECIFICATION Version 5.2 | Vol 6, Part D page 3115, 4.2 ACTIVE SCANNING</li>
+<li>BLUETOOTH CORE SPECIFICATION Version 5.2 | Vol 4, Part E page 2382, 7.7.65.2 LE Advertising Report event</li>
+<li>BLUETOOTH CORE SPECIFICATION Version 5.2 | Vol 3, Part C page 1392, BLUETOOTH CORE SPECIFICATION Version 5.2 | Vol 3, Part C page 1392</li>
+<li><a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/">Assigned numbers and GAP</a></li>
+</ol>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Class_of_Device/" title="Class_of_Device" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                Class_of_Device
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../../.." title="概述" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                概述
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 HatLab Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.baidu.com" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/squidfunk" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/in/squidfunk" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1",url:{base:"../../../.."}})</script>
+      
+    
+  </body>
+</html>
