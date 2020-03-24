@@ -1,0 +1,38 @@
+site_name: HatLab_iotwiki
+
+nav:
+    - Home: index.md
+    - About: about.md
+    - License: license.md
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'Teal'
+    accent: 'Deep Orange'
+
+   #font: false
+
+  logo:
+    icon: 'cloud'
+
+  language: 'zh'
+
+
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://www.baidu.com'
+    - type: 'twitter'
+      link: 'https://twitter.com/squidfunk'
+    - type: 'linkedin'
+      link: 'https://www.linkedin.com/in/squidfunk'
+
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
