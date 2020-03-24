@@ -1,22 +1,67 @@
-site_name: HatLab_iotwiki
+site_name: HatLab_IOT_Wiki
+site_description: HatLab_IOT_Wiki
+site_author: HatLab Team members
+site_url: https://dassecurity-labs.github.io/HatLab_IOT_Wiki/
 
+
+
+
+copyright: 'Copyright &copy; 2020 HatLab Team'
+
+
+
+
+
+# setting nav and deploy page
 nav:
-    - Home: index.md
-    - About: about.md
-    - License: license.md
-    - My: my.md
+    - Introduction:
+        - Home: index.md
+        - About: about.md
+    
+        
+    - 无线电安全:
+
+        - 蓝牙安全:
+            - 基础攻防知识:
+                - Class_of_Device: wireless_security/bluetooth_security/base_intro/Class_of_Device.md
+                - 主动扫描和被动扫描: wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning.md
+    
+                
+        - ZigBee 安全:
+            - 概述: index.md
+
+
+
+
+    - 固件安全:
+        - 概述: index.md
+
+
+
+
+
+
+
+    - 硬件安全:
+        - 概述: index.md
+
+
+
+
+
+
+
 
 theme:
   name: 'material'
   palette:
     primary: 'Teal'
     accent: 'Deep Orange'
-
-   #font: false
+  feature:
+    tabs: true
 
   logo:
     icon: 'cloud'
-
   language: 'zh'
 
 
