@@ -11,7 +11,6 @@ copyright: 'Copyright &copy; 2020 HatLab Team'
 
 
 
-
 # setting nav and deploy page
 nav:
     - Introduction:
@@ -23,8 +22,8 @@ nav:
 
         - 蓝牙安全:
             - 基础攻防知识:
-                - Class_of_Device: wireless_security/bluetooth_security/base_intro/Class_of_Device.md
-                - 主动扫描和被动扫描: wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning.md
+                - Class of Device: wireless_security/bluetooth_security/base_intro/Class_of_Device.md
+                - Active Scanning vs. Passive Scanning: wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning.md
     
                 
 #        - ZigBee 安全:
@@ -34,25 +33,24 @@ nav:
 
 
     - 固件安全:
-       - 概述: firmware_security/index.md
+        - 概述: firmware_security/index.md
 
+    - 硬件安全:
+        - 概述: hardware_security/index.md
 
-
-#    - 硬件安全:
-#        - 概述: index.md
-
-
-
-
-
+    - 工具库:
+        - 概述: tools_lib/index.md
+        - 固件安全工具: tools_lib/firmware_tools/index.md
 
 
 
 theme:
   name: 'material'
+  
   palette:
     primary: 'Light Blue'
     accent: 'Deep Orange'
+  
   feature:
     tabs: true
 
@@ -65,16 +63,35 @@ theme:
 extra:
   social:
     - type: 'github'
-      link: 'https://www.baidu.com'
+      link: 'https://github.com/DasSecurity-Labs'
     - type: 'twitter'
-      link: 'https://twitter.com/squidfunk'
+      link: 'https://twitter.com/H4looo'
     - type: 'linkedin'
-      link: 'https://www.linkedin.com/in/squidfunk'
+      link: 'https://www.linkedin.com/'
 
 
 markdown_extensions:
   - admonition
   - codehilite:
       guess_lang: false
+      linenums: false
   - toc:
       permalink: true
+  - footnotes
+  - meta
+  - def_list
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.tilde

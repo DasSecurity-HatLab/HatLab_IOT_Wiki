@@ -16,6 +16,7 @@ CoD 的格式是可变的，具体的格式由 Format Type 字段指定。其中
 
 ![](./img/pic1.png)
 
+
 下面将分别解释组成 CoD 的 3 个主要字段 Service Class, Major Device Class 与 Minor Device Class。
 
 ### Service Class

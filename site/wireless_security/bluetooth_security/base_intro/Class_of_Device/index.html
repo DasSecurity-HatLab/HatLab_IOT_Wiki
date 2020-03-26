@@ -42,7 +42,7 @@
     
     
       
-        <title>Class_of_Device - HatLab_IOT_Wiki</title>
+        <title>Class of Device - HatLab_IOT_Wiki</title>
       
     
     
@@ -115,7 +115,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Class_of_Device
+                Class of Device
               
             </span>
           
@@ -212,6 +212,32 @@
       
         <a href="../../../../firmware_security/" class="md-tabs__link">
           固件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../hardware_security/" class="md-tabs__link">
+          硬件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../tools_lib/" class="md-tabs__link">
+          工具库
         </a>
       
     </li>
@@ -377,11 +403,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Class_of_Device
+        Class of Device
       </label>
     
-    <a href="./" title="Class_of_Device" class="md-nav__link md-nav__link--active">
-      Class_of_Device
+    <a href="./" title="Class of Device" class="md-nav__link md-nav__link--active">
+      Class of Device
     </a>
     
       
@@ -464,8 +490,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Active_Scanning_vs_Passive_Scanning/" title="主动扫描和被动扫描" class="md-nav__link">
-      主动扫描和被动扫描
+    <a href="../Active_Scanning_vs_Passive_Scanning/" title="Active Scanning vs. Passive Scanning" class="md-nav__link">
+      Active Scanning vs. Passive Scanning
     </a>
   </li>
 
@@ -512,6 +538,90 @@
   <li class="md-nav__item">
     <a href="../../../../firmware_security/" title="概述" class="md-nav__link">
       概述
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      硬件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        硬件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hardware_security/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tools_lib/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tools_lib/firmware_tools/" title="固件安全工具" class="md-nav__link">
+      固件安全工具
     </a>
   </li>
 
@@ -611,7 +721,7 @@
               
                 
                 
-                  <h1>Class_of_Device</h1>
+                  <h1>Class of Device</h1>
                 
                 <blockquote>
 <p>Sourcell@海特实验室</p>
@@ -625,7 +735,7 @@
 </ul>
 <p>另外当本地设备收到远端设备的连接请求时，将收到 <code>HCI_Connection_Request</code> event。该 event 也会携带 CoD。</p>
 <h2 id="cod">解析 CoD 结构<a class="headerlink" href="#cod" title="Permanent link">&para;</a></h2>
-<p>CoD 的格式是可变的，具体的格式由 Format Type 字段指定。其中最常见的格式是 "format #1"，且其他格式极其罕见。此时 CoD 是一个大小为 3 bytes 的数值，它的结构如下图所示（1st byte 为最高字节）：</p>
+<p>CoD 的格式是可变的，具体的格式由 Format Type 字段指定。其中最常见的格式是 "format #1"，且其他格式极其罕见。此时 CoD 是一个大小为 3 bytes 的数值，它的结构如下图所示（1<sup>st</sup> byte 为最高字节）：</p>
 <p><img alt="" src="../img/pic1.png" /></p>
 <p>下面将分别解释组成 CoD 的 3 个主要字段 Service Class, Major Device Class 与 Minor Device Class。</p>
 <h3 id="service-class">Service Class<a class="headerlink" href="#service-class" title="Permanent link">&para;</a></h3>
@@ -780,7 +890,6 @@
 .... .... .... .... .... ..00 = Format Type: 0x0
 </code></pre></div>
 
-
 <h2 id="cod_2">CoD 的伪装<a class="headerlink" href="#cod_2" title="Permanent link">&para;</a></h2>
 <p>CoD 并不是写死在 controller 中的数据，实际上它被 host 管理。Host 可以使用 <code>HCI_Write_Class_of_Device</code> command 修改本地设备的类型，从而达到伪装的目的。使用如下命令可以读取或修改本地 BR/EDR 设备的类型：</p>
 <div class="codehilite"><pre><span></span><code>hciconfig hci0 class
@@ -798,7 +907,6 @@ hciconfig hci0 class
 <span class="c1">#         Service Classes: Unspecified</span>
 <span class="c1">#         Device Class: Peripheral, Keyboard</span>
 </code></pre></div>
-
 
 <p>另外 ref [2] 是一个在线的 CoD 生成器，可以帮助我们根据选定的设备类型自动生成 CoD 数值。</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
@@ -843,13 +951,13 @@ hciconfig hci0 class
           </a>
         
         
-          <a href="../Active_Scanning_vs_Passive_Scanning/" title="主动扫描和被动扫描" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Active_Scanning_vs_Passive_Scanning/" title="Active Scanning vs. Passive Scanning" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                主动扫描和被动扫描
+                Active Scanning vs. Passive Scanning
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -878,11 +986,11 @@ hciconfig hci0 class
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
     
-      <a href="https://www.baidu.com" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/DasSecurity-Labs" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://twitter.com/squidfunk" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://twitter.com/H4looo" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
     
-      <a href="https://www.linkedin.com/in/squidfunk" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
     
   </div>
 

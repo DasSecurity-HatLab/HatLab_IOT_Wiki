@@ -42,7 +42,7 @@
     
     
       
-        <title>主动扫描和被动扫描 - HatLab_IOT_Wiki</title>
+        <title>Active Scanning vs. Passive Scanning - HatLab_IOT_Wiki</title>
       
     
     
@@ -115,7 +115,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                主动扫描和被动扫描
+                Active Scanning vs. Passive Scanning
               
             </span>
           
@@ -212,6 +212,32 @@
       
         <a href="../../../../firmware_security/" class="md-tabs__link">
           固件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../hardware_security/" class="md-tabs__link">
+          硬件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../tools_lib/" class="md-tabs__link">
+          工具库
         </a>
       
     </li>
@@ -370,8 +396,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Class_of_Device/" title="Class_of_Device" class="md-nav__link">
-      Class_of_Device
+    <a href="../Class_of_Device/" title="Class of Device" class="md-nav__link">
+      Class of Device
     </a>
   </li>
 
@@ -389,11 +415,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        主动扫描和被动扫描
+        Active Scanning vs. Passive Scanning
       </label>
     
-    <a href="./" title="主动扫描和被动扫描" class="md-nav__link md-nav__link--active">
-      主动扫描和被动扫描
+    <a href="./" title="Active Scanning vs. Passive Scanning" class="md-nav__link md-nav__link--active">
+      Active Scanning vs. Passive Scanning
     </a>
     
       
@@ -501,6 +527,90 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      硬件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        硬件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hardware_security/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tools_lib/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tools_lib/firmware_tools/" title="固件安全工具" class="md-nav__link">
+      固件安全工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -571,7 +681,7 @@
               
                 
                 
-                  <h1>主动扫描和被动扫描</h1>
+                  <h1>Active Scanning vs. Passive Scanning</h1>
                 
                 <blockquote>
 <p>Sourcell@海特实验室</p>
@@ -591,7 +701,6 @@
     Scan Filter Policy: Accept all advertisements, except directed advertisements not addressed to this device (0x00)
 </code></pre></div>
 
-
 <p>当设为 0x01 时执行 active scanning：</p>
 <div class="codehilite"><pre><span></span><code>Bluetooth HCI Command - LE Set Scan Parameters
     Command Opcode: LE Set Scan Parameters (0x200b)
@@ -605,7 +714,6 @@
     [Command-Response Delta: 1.784ms]
 </code></pre></div>
 
-
 <p>其他的值目前均被保留。<code>HCI_LE_Set_Scan_Parameters</code> command 只是配置了扫描的参数，要真正开始扫描还需要发送 <code>HCI_LE_Set_Scan_Enable</code> command：</p>
 <div class="codehilite"><pre><span></span><code>Bluetooth HCI Command - LE Set Scan Enable
     Command Opcode: LE Set Scan Enable (0x200c)
@@ -613,7 +721,6 @@
     Scan Enable: true (0x01)
     Filter Duplicates: true (0x01)
 </code></pre></div>
-
 
 <p>Passive scanning 的数据流如下[3]：</p>
 <p><img alt="" src="../img/pic3.png" /></p>
@@ -669,7 +776,6 @@
          +-------------------+
 </code></pre></div>
 
-
 <p>其中 AD Type 的含义由 <a href="https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile">GAP (Generic Access Profile)</a> 定义。</p>
 <p>这里举两个例子。比如 passive scanning 返回的扫描结果如下：</p>
 <div class="codehilite"><pre><span></span><code>Bluetooth HCI Event - LE Meta
@@ -706,7 +812,6 @@
     RSSI: -65dBm
 </code></pre></div>
 
-
 <p>再比如 Active scanning 因 <code>SCAN_RSP</code> PDU 返回扫描结果如下：</p>
 <div class="codehilite"><pre><span></span><code>Bluetooth HCI Event - LE Meta
     Event Code: LE Meta (0x3e)
@@ -737,7 +842,6 @@
             UUID 16: Unknown (0x00ff)
     RSSI: -68dBm
 </code></pre></div>
-
 
 <h2 id="active-scanning-passive-scanning_1">实战中 Active Scanning 不一定比 Passive Scanning 更有效<a class="headerlink" href="#active-scanning-passive-scanning_1" title="Permanent link">&para;</a></h2>
 <p>在情报收集阶段，我们很关心目标设备的名字。但是厂商给出设备名称的位置是不确定的。设备名称可能位于 advertising data 也可能位于 scan response data。因此有时使用 passive scanning 也能获取目标设备的名字。</p>
@@ -774,7 +878,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Class_of_Device/" title="Class_of_Device" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Class_of_Device/" title="Class of Device" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -783,7 +887,7 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                Class_of_Device
+                Class of Device
               </span>
             </div>
           </a>
@@ -824,11 +928,11 @@
   <div class="md-footer-social">
     <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
     
-      <a href="https://www.baidu.com" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/DasSecurity-Labs" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://twitter.com/squidfunk" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
+      <a href="https://twitter.com/H4looo" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
     
-      <a href="https://www.linkedin.com/in/squidfunk" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
     
   </div>
 
