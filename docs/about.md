@@ -27,9 +27,6 @@
 
 实验室先后发现 Cisco、Juniper、PaloAlto、TP-LINK、GoAhead、Lua 等知名厂商与相关通用 IOT 组件的漏洞。参与 HITB、ZeroNights、强网杯、GeekPwn 等国内外知名会议和演讲，并自主研发多个创新性硬件设备。
 
-- [2017 年 GeekPwn -  破解智能家居、小米平衡车](https://www.sohu.com/a/141137863_783750 "2017 年 GeekPwn HatLab")
-- [2019 GeekPwn 名人堂 - 企业级网关的漏洞利用](http://hof.geekpwn.org/zh/index.html)
-- [2019 ZeroNight 会议 - CiscoASA: From Zero to ID=0](https://youtu.be/yFNAdn-ZvpI)
 
 ### 加入我们
 
