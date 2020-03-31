@@ -41,7 +41,7 @@ nav:
   
         - IOT 设备指令集特点:
             - 敏感函数定位技巧: firmware_security/IOT_instructions_charac/found_danger_func.md
-
+            - 栈溢出利用技巧: firmware_security/IOT_instructions_charac/stackoverflow_exploit.md
     - 硬件安全:
         - 概述: hardware_security/index.md
 
