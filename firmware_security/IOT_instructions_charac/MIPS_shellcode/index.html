@@ -1145,7 +1145,7 @@ syscall 0x40404
 <li>与 x86 指令不同的是，这里的系统调用号是存储在 v0 寄存器中。</li>
 </ul>
 <p>MIPS 的系统调用号可以在 <code>/usr/mips-linux-gnu/include/asm/unistd.h</code> 中看到，调用号是从 4000 开始：</p>
-<p><img alt="" src="http://10.20.152.151/server/../Public/Uploads/2020-04-09/5e8ec79feefa5.png" /></p>
+<p><img alt="" src="../img/pic5.png" /></p>
 <ul>
 <li>关于 mips 交叉环境，可以直接使用下面的命令安装：</li>
 </ul>
@@ -1325,7 +1325,7 @@ connect(sock,(struct sockaddr *)&amp;server,sizeof(server));
 
 <p>但是一般在这里，我们会先使用 <code>sockaddr_in</code> 结构体，将 ip 和端口进行赋值，再将其强制类型转换为 <code>sockaddr</code>。因为 <code>sockaddr</code> 结构体的 IP 地址和端口段都包含在了 <code>sa_data</code> 段，不太容易直接赋值。</p>
 <p><code>sockaddr</code> 结构体的原型如下：</p>
-<p><img alt="" src="http://10.20.152.151/server/../Public/Uploads/2020-04-09/5e8f463cddf06.png" /></p>
+<p><img alt="" src="../img/pic6.png" /></p>
 <ul>
 <li>整个结构体大小固定为 16 字节。</li>
 </ul>
@@ -1353,7 +1353,7 @@ syscall 0x40404
 </code></pre></div>
 
 <p>在调试中类似这种情况就是对的：</p>
-<p><img alt="" src="http://10.20.152.151/server/../Public/Uploads/2020-04-10/5e8fdac3c4ff6.png" /></p>
+<p><img alt="" src="../img/pic7.png" /></p>
 <h3 id="execve_1">execve 系统调用<a class="headerlink" href="#execve_1" title="Permanent link">&para;</a></h3>
 <p>这里的 <code>execve</code> 的系统调用同样是执行 <code>execve("/bin/sh",0,0);</code> 函数，写法参考上文，再次不在赘述。</p>
 <h2 id="_3">调试方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
