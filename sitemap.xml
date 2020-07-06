@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/summary/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/about/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/wireless_security/bluetooth_security/base_intro/Class_of_Device/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/wireless_security/bluetooth_security/vuln_analyse/CVE-2017-0785/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/firmware_sort/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/firmware_obtain/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/firmware_obtain/website_download/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/firmware_obtain/update_captrue/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/IOT_instructions_charac/found_danger_func/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/IOT_instructions_charac/stackoverflow_exploit/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/IOT_instructions_charac/MIPS_shellcode/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/environment_building/Mips_fuzzing_environment_building/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/vuln_analyse/TL_WR841n_vuln_analyse/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/summary_article/string_vulnerability/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/hardware_security/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/tools_lib/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://dassecurity-labs.github.io/HatLab_IOT_Wiki/tools_lib/firmware_tools/</loc>
-     <lastmod>2020-04-13</lastmod>
+     <lastmod>2020-07-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

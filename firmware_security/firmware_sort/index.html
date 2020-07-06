@@ -529,7 +529,7 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    分类
+    固件分类
   </a>
   
 </li>
@@ -543,6 +543,20 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    通用型操作系统固件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    实时操作系统固件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     参考文献
   </a>
   
@@ -903,7 +917,7 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    分类
+    固件分类
   </a>
   
 </li>
@@ -917,6 +931,20 @@
       
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    通用型操作系统固件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    实时操作系统固件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     参考文献
   </a>
   
@@ -941,26 +969,38 @@
                 
                   <h1>固件分类</h1>
                 
-                <h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>针对于固件类型的不同，可以将物联网设备进分类。</p>
-<h2 id="_2">分类<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>可以分为下面三类：</p>
+                <div class="toc">
+<ul>
+<li><a href="#_1">概述</a></li>
+<li><a href="#_2">固件分类</a></li>
+<li><a href="#_3">不同类型固件的设备特点</a></li>
+<li><a href="#_4">通用型操作系统固件</a></li>
+<li><a href="#_5">实时操作系统固件</a></li>
+<li><a href="#_6">参考文献</a></li>
+</ul>
+</div>
+<h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>针对于固件操作系统类型的不同，可以将物联网设备的固件进行如下的分类。</p>
+<h2 id="_2">固件分类<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>根据固件操作系统类型的不同，可以大概分为下面三类：</p>
 <ol>
 <li>
-<p><strong>通用型操作系统</strong>。在嵌入式的设备固件中，一般都是使用的 linux 内核的操作系统，libc 库也是使用的精简的 uClibc。 IOT 设备中最常见的系统也为这种。具有的代表性的设备有智能路由器、智能摄像头固件等。</p>
+<p><strong>通用型操作系统</strong>。在嵌入式的设备固件中，一般都是**使用的 linux 内核、unix 风格文件系统**的操作系统，libc 库使用的是 glibc。 而 IOT 设备中常见的函数库为精简版本的 libc，即 uClibc。具有的代表性的设备有智能路由器、智能摄像头固件等。</p>
 </li>
 <li>
-<p><strong>实时操作系统</strong>。例如 VxWorks 和 FreeRTOS 等为常见的实时操作系统。许多路由器厂商也会使用 VxWorks 作为其文件系统，如 TPLINK 路由器固件。</p>
+<p><strong>实时操作系统</strong>。例如 VxWorks 和 FreeRTOS 等为常见的实时操作系统。许多路由器厂商也会使用 VxWorks 作为其固件文件系统，如 TPLINK 路由器固件。</p>
 </li>
 <li>
-<p><strong>无操作系统/裸机</strong>。这类的设备可以看作是 "单片机设备"，设备固件中是比较简单的控制、循环逻辑，处理外部世界的各种事件，如常见的智能门锁内部固件。</p>
+<p><strong>无操作系统/裸机</strong>。这类的设备可以看作是 "单片机设备"，设备固件中是比较简单的控制、循环逻辑，利用中断、例程来处理外部世界的各种事件，如常见的智能门锁内部固件。</p>
+</li>
+<li>
+<p>如下图中为某个门锁的固件，固件中的汇编代码中不存在函数的符号表、got 表等信息，直接静态逆向分析的难度大。在后面会单独介绍关于此类固件的逆向方法和逆向技巧。</p>
 </li>
 </ol>
-<p>如下图中为某个门锁的固件，固件中的汇编代码不存在符号表、got 表等信息，直接静态逆向分析的难度大。</p>
 <p><img alt="" src="../img/pic1.png" /></p>
 <h2 id="_3">不同类型固件的设备特点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
-<li>通用型操作系统的特点是适合处理大量的数据、高计算量的设备。固件一般存在符号表，逆向难度较小。</li>
+<li>通用型操作系统的特点是适合于处理大量的数据、高计算量的设备。固件一般存在完整的符号表，逆向难度较小。</li>
 <li>
 <p>无操作系统/裸机的设备的能耗低，资源管理高效，适合长时间续航。固件代码都是静态编译，对于库函数也没有相应的符号名称。</p>
 </li>
@@ -969,7 +1009,20 @@
 </li>
 </ol>
 <p><img alt="" src="../img/pic2.png" /></p>
-<h2 id="_4">参考文献<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_4">通用型操作系统固件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>对通用型操作系统固件进行 binwalk 解包之后，通常就是熟悉的 unix 风格的目录结构，如下。分析时，对相应的 cgi 程序、脚本代码使用 IDA、 Ghidra 等工具进行逆向即可。</p>
+<p><img alt="" src="../img/pic3.png" /></p>
+<h2 id="_5">实时操作系统固件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>常见的实时操作系统固件的类型还可以分为：</p>
+<ol>
+<li>VxWorks</li>
+<li>FreeRTOS</li>
+<li>eCos</li>
+<li>...</li>
+</ol>
+<p>这里以 Vxworks 为例，使用 binwalk 进行固件的解析时，一般会有一些特征信息，如 <code>VxWorks WIND kernel version "2.5"</code> 等：</p>
+<p><img alt="" src="../img/pic3.png" /></p>
+<h2 id="_6">参考文献<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p><a href="https://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&amp;dbname=CMFD202001&amp;filename=1020004498.nh&amp;v=MjExNTMzcVRyV00xRnJDVVI3cWZaT1Z2Rnl2blY3dkxWRjI1SHJPNEd0WEZwNUViUElSOGVYMUx1eFlTN0RoMVQ=" title="轻量级物联网设备固件内存漏洞挖掘研究">轻量级物联网设备固件内存漏洞挖掘研究</a></p>
                 
                   
