@@ -42,7 +42,7 @@
     
     
       
-        <title>fuzzing 环境搭建 - HatLab_IOT_Wiki</title>
+        <title>MIPS fuzzing 环境搭建 - HatLab_IOT_Wiki</title>
       
     
     
@@ -115,7 +115,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                fuzzing 环境搭建
+                MIPS fuzzing 环境搭建
               
             </span>
           
@@ -413,6 +413,42 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2">
+    
+    <label class="md-nav__link" for="nav-2-1-2">
+      漏洞分析
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        漏洞分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../wireless_security/bluetooth_security/vuln_analyse/CVE-2017-0785/" title="BlueBorne 之 CVE-2017-0785 原理分析" class="md-nav__link">
+      BlueBorne 之 CVE-2017-0785 原理分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -571,6 +607,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../IOT_instructions_charac/MIPS_shellcode/" title="MIPS shellcode 指令编写技巧" class="md-nav__link">
+      MIPS shellcode 指令编写技巧
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -610,11 +658,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        fuzzing 环境搭建
+        MIPS fuzzing 环境搭建
       </label>
     
-    <a href="./" title="fuzzing 环境搭建" class="md-nav__link md-nav__link--active">
-      fuzzing 环境搭建
+    <a href="./" title="MIPS fuzzing 环境搭建" class="md-nav__link md-nav__link--active">
+      MIPS fuzzing 环境搭建
     </a>
     
       
@@ -792,10 +840,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6">
     
     <label class="md-nav__link" for="nav-3-6">
-      总结性文章
+      漏洞分析
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-3-6">
+        漏洞分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vuln_analyse/TL_WR841n_vuln_analyse/" title="TPLINK_WR841N 路由器漏洞分析" class="md-nav__link">
+      TPLINK_WR841N 路由器漏洞分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      总结性文章
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
         总结性文章
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1083,7 +1167,7 @@
               
                 
                 
-                  <h1>fuzzing 环境搭建</h1>
+                  <h1>MIPS fuzzing 环境搭建</h1>
                 
                 <h2 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本文介绍使用 afl 来 fuzzing x86 架构之外的程序环境的搭建，以及安装 afl 的必要组件来构建环境搭建的步骤。主要归纳搭建 AFL qemu 模式、AFL unicorn 模式、qiling 框架的方法步骤和纪录一下搭建过程中的一些坑。</p>
@@ -1316,7 +1400,7 @@ afl-showmap -U -m none -o .test-instr0 -- python simple_test_harness.py ./sample
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../IOT_instructions_charac/stackoverflow_exploit/" title="栈溢出利用技巧" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../IOT_instructions_charac/MIPS_shellcode/" title="MIPS shellcode 指令编写技巧" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1325,19 +1409,19 @@ afl-showmap -U -m none -o .test-instr0 -- python simple_test_harness.py ./sample
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                栈溢出利用技巧
+                MIPS shellcode 指令编写技巧
               </span>
             </div>
           </a>
         
         
-          <a href="../../summary_article/string_vulnerability/" title="C 语言中字符分割有关的函数与常见字符串复制溢出点" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../vuln_analyse/TL_WR841n_vuln_analyse/" title="TPLINK_WR841N 路由器漏洞分析" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                C 语言中字符分割有关的函数与常见字符串复制溢出点
+                TPLINK_WR841N 路由器漏洞分析
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

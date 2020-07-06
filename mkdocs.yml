@@ -24,12 +24,12 @@ nav:
             - 基础攻防知识:
                 - Class of Device: wireless_security/bluetooth_security/base_intro/Class_of_Device.md
                 - Active Scanning vs. Passive Scanning: wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning.md
-    
+   
+            - 漏洞分析:
+                - BlueBorne 之 CVE-2017-0785 原理分析: wireless_security/bluetooth_security/vuln_analyse/CVE-2017-0785.md 
                 
 #        - ZigBee 安全:
 #            - 概述: index.md
-
-
 
 
     - 固件安全:
@@ -43,8 +43,12 @@ nav:
         - IOT 设备指令集特点:
             - 敏感函数定位技巧: firmware_security/IOT_instructions_charac/found_danger_func.md
             - 栈溢出利用技巧: firmware_security/IOT_instructions_charac/stackoverflow_exploit.md
+            - MIPS shellcode 指令编写技巧: firmware_security/IOT_instructions_charac/MIPS_shellcode.md
         - 环境搭建:
-            - fuzzing 环境搭建: firmware_security/environment_building/Mips_fuzzing_environment_building.md
+            - MIPS fuzzing 环境搭建: firmware_security/environment_building/Mips_fuzzing_environment_building.md
+
+        - 漏洞分析:
+            - TPLINK_WR841N 路由器漏洞分析: firmware_security/vuln_analyse/TL_WR841n_vuln_analyse.md
 
         - 总结性文章:
             - C 语言中字符分割有关的函数与常见字符串复制溢出点: firmware_security/summary_article/string_vulnerability.md
