@@ -1,0 +1,2405 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="HatLab_IOT_Wiki">
+      
+      
+        <link rel="canonical" href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/firmware_security/IOT_instructions_charac/POWERPC/readme/">
+      
+      
+        <meta name="author" content="HatLab Team members">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
+    
+    
+      
+        <title>系统架构特点 - HatLab_IOT_Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#03a9f4">
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#powerpc" tabindex="0" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/" title="HatLab_IOT_Wiki" aria-label="HatLab_IOT_Wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">cloud</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              HatLab_IOT_Wiki
+            </span>
+            <span class="md-header-nav__topic">
+              
+                系统架构特点
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../.." class="md-tabs__link">
+          Introduction
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../wireless_security/bluetooth_security/base_intro/Class_of_Device/" class="md-tabs__link">
+          无线电安全
+        </a>
+      
+    </li>
+  
+
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../" class="md-tabs__link md-tabs__link--active">
+          固件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../hardware_security/" class="md-tabs__link">
+          硬件安全
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../../tools_lib/" class="md-tabs__link">
+          工具库
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dassecurity-labs.github.io/HatLab_IOT_Wiki/" title="HatLab_IOT_Wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon">cloud</i>
+      
+    </a>
+    HatLab_IOT_Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Introduction
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Introduction
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="基本介绍/Intro" class="md-nav__link">
+      基本介绍/Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../summary/" title="内容概述/Summary" class="md-nav__link">
+      内容概述/Summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../about/" title="关于我们/About" class="md-nav__link">
+      关于我们/About
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      无线电安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        无线电安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      蓝牙安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        蓝牙安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1">
+    
+    <label class="md-nav__link" for="nav-2-1-1">
+      基础攻防知识
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-1">
+        基础攻防知识
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../wireless_security/bluetooth_security/base_intro/Class_of_Device/" title="Class of Device" class="md-nav__link">
+      Class of Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../wireless_security/bluetooth_security/base_intro/Active_Scanning_vs_Passive_Scanning/" title="Active Scanning vs. Passive Scanning" class="md-nav__link">
+      Active Scanning vs. Passive Scanning
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-2" type="checkbox" id="nav-2-1-2">
+    
+    <label class="md-nav__link" for="nav-2-1-2">
+      漏洞分析
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-2">
+        漏洞分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../wireless_security/bluetooth_security/vuln_analyse/CVE-2017-0785/" title="BlueBorne 之 CVE-2017-0785 原理分析" class="md-nav__link">
+      BlueBorne 之 CVE-2017-0785 原理分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      固件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        固件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_sort/" title="固件分类" class="md-nav__link">
+      固件分类
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      固件获取
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        固件获取
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/website_download/" title="官网下载" class="md-nav__link">
+      官网下载
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/update_captrue/" title="更新抓包获取" class="md-nav__link">
+      更新抓包获取
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/other/" title="其他途径" class="md-nav__link">
+      其他途径
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3-5" type="checkbox" id="nav-3-3-5">
+    
+    <label class="md-nav__link" for="nav-3-3-5">
+      硬件方法提取
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-3-5">
+        硬件方法提取
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/hardware_approach/readme/" title="硬件方法提取概述" class="md-nav__link">
+      硬件方法提取概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/hardware_approach/mcu_dump/" title="MCU 转储固件" class="md-nav__link">
+      MCU 转储固件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/hardware_approach/programmer_dump/" title="使用烧写器/编程器提取固件" class="md-nav__link">
+      使用烧写器/编程器提取固件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/hardware_approach/jtag_dump/" title="JTAG 接口提取固件" class="md-nav__link">
+      JTAG 接口提取固件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/hardware_approach/camera_dump/" title="某摄像头固件提取" class="md-nav__link">
+      某摄像头固件提取
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_obtain/hardware_approach/router_dump/" title="某款路由器固件提取" class="md-nav__link">
+      某款路由器固件提取
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      固件处理
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        固件处理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4-1" type="checkbox" id="nav-3-4-1">
+    
+    <label class="md-nav__link" for="nav-3-4-1">
+      固件解包
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-4-1">
+        固件解包
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="binwalk" class="md-nav__link">
+      binwalk
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4-2" type="checkbox" id="nav-3-4-2">
+    
+    <label class="md-nav__link" for="nav-3-4-2">
+      固件加密
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-4-2">
+        固件加密
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="固件加密的常见处理方法" class="md-nav__link">
+      固件加密的常见处理方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4-3" type="checkbox" id="nav-3-4-3">
+    
+    <label class="md-nav__link" for="nav-3-4-3">
+      固件重打包
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-4-3">
+        固件重打包
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="固件格式概述及修改方法" class="md-nav__link">
+      固件格式概述及修改方法
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      固件分析
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        固件分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_analysis/readme/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_analysis/linux_filesystem_analysis/" title="Linux 文件系统分析步骤" class="md-nav__link">
+      Linux 文件系统分析步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_analysis/vxworks_filesystem_analysis/" title="VxWorks 文件系统分析" class="md-nav__link">
+      VxWorks 文件系统分析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="路由器固件分析过程常用字段" class="md-nav__link">
+      路由器固件分析过程常用字段
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5-5" type="checkbox" id="nav-3-5-5">
+    
+    <label class="md-nav__link" for="nav-3-5-5">
+      裸机固件分析
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-5-5">
+        裸机固件分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_analysis/singlechip_firmware_analysis/library_function_distinguish/" title="裸机程序库函数识别与恢复" class="md-nav__link">
+      裸机程序库函数识别与恢复
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_analysis/singlechip_firmware_analysis/binary_analysis/" title="裸机程序二进制分析" class="md-nav__link">
+      裸机程序二进制分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6" checked>
+    
+    <label class="md-nav__link" for="nav-3-6">
+      固件指令集特点
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        固件指令集特点
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-1" type="checkbox" id="nav-3-6-1">
+    
+    <label class="md-nav__link" for="nav-3-6-1">
+      MIPS 架构指令特点
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-1">
+        MIPS 架构指令特点
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../found_danger_func/" title="敏感函数定位技巧" class="md-nav__link">
+      敏感函数定位技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../stackoverflow_exploit/" title="栈溢出利用技巧" class="md-nav__link">
+      栈溢出利用技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../MIPS_shellcode/" title="MIPS shellcode 指令编写技巧" class="md-nav__link">
+      MIPS shellcode 指令编写技巧
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-2" type="checkbox" id="nav-3-6-2">
+    
+    <label class="md-nav__link" for="nav-3-6-2">
+      ARM 架构指令特点
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-2">
+        ARM 架构指令特点
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ARM/readme/" title="系统特点解析" class="md-nav__link">
+      系统特点解析
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="固件逆向技巧" class="md-nav__link">
+      固件逆向技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="敏感函数定位技巧" class="md-nav__link">
+      敏感函数定位技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ARM/sof_tips/" title="栈溢出利用技巧" class="md-nav__link">
+      栈溢出利用技巧
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="shellcode 编写技巧" class="md-nav__link">
+      shellcode 编写技巧
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6-3" type="checkbox" id="nav-3-6-3" checked>
+    
+    <label class="md-nav__link" for="nav-3-6-3">
+      POWERPC 架构指令特点
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-6-3">
+        POWERPC 架构指令特点
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        系统架构特点
+      </label>
+    
+    <a href="./" title="系统架构特点" class="md-nav__link md-nav__link--active">
+      系统架构特点
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#powerpc" class="md-nav__link">
+    PowerPC 概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powerpc_1" class="md-nav__link">
+    PowerPC 汇编介绍
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    寄存器
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    通用寄存器的介绍以及用途
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    专用寄存器的介绍以及用途
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    常见汇编指令操作码
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    赋值语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    存储指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    加载指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    转移/跳转指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    其他指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    函数调用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ida" class="md-nav__link">
+    IDA 汇编代码例子
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    函数初始化汇编语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    逻辑处理一
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    逻辑处理二
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    函数末尾
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="固件逆向技巧" class="md-nav__link">
+      固件逆向技巧
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-7" type="checkbox" id="nav-3-7">
+    
+    <label class="md-nav__link" for="nav-3-7">
+      环境搭建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-7">
+        环境搭建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../environment_building/Mips_fuzzing_environment_building/" title="MIPS fuzzing 环境搭建" class="md-nav__link">
+      MIPS fuzzing 环境搭建
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8" type="checkbox" id="nav-3-8">
+    
+    <label class="md-nav__link" for="nav-3-8">
+      固件安全实例
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-8">
+        固件安全实例
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8-1" type="checkbox" id="nav-3-8-1">
+    
+    <label class="md-nav__link" for="nav-3-8-1">
+      路由器安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-8-1">
+        路由器安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../vuln_analyse/TL_WR841n_vuln_analyse/" title="TPLINK_WR841N 路由器漏洞分析" class="md-nav__link">
+      TPLINK_WR841N 路由器漏洞分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8-2" type="checkbox" id="nav-3-8-2">
+    
+    <label class="md-nav__link" for="nav-3-8-2">
+      摄像头安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-8-2">
+        摄像头安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="雄迈 IPC 摄像头后门漏洞分析" class="md-nav__link">
+      雄迈 IPC 摄像头后门漏洞分析
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-8-3" type="checkbox" id="nav-3-8-3">
+    
+    <label class="md-nav__link" for="nav-3-8-3">
+      通用组件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-8-3">
+        通用组件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="pppd 栈溢出漏洞分析（cve-2020-8597）" class="md-nav__link">
+      pppd 栈溢出漏洞分析（cve-2020-8597）
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9" type="checkbox" id="nav-3-9">
+    
+    <label class="md-nav__link" for="nav-3-9">
+      固件安全工具
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-9">
+        固件安全工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_security_tools/readme/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9-2" type="checkbox" id="nav-3-9-2">
+    
+    <label class="md-nav__link" for="nav-3-9-2">
+      原创工具/脚本
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-9-2">
+        原创工具/脚本
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_security_tools/IDA_unicorn_base_tool/" title="一款基于 unicorn 动态指令执行的 IDA 插件" class="md-nav__link">
+      一款基于 unicorn 动态指令执行的 IDA 插件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_security_tools/firmware_simulation/" title="一款基于 firmadyne 优化的固件模拟工具" class="md-nav__link">
+      一款基于 firmadyne 优化的固件模拟工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../firmware_security_tools/firmadyne_fat/" title="基于 frimadyne 改进的 fat.py 脚本" class="md-nav__link">
+      基于 frimadyne 改进的 fat.py 脚本
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-9-3" type="checkbox" id="nav-3-9-3">
+    
+    <label class="md-nav__link" for="nav-3-9-3">
+      第三方工具使用指南
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-9-3">
+        第三方工具使用指南
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../x" title="协议 fuzzing 之 boofuzz 使用指南" class="md-nav__link">
+      协议 fuzzing 之 boofuzz 使用指南
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-10" type="checkbox" id="nav-3-10">
+    
+    <label class="md-nav__link" for="nav-3-10">
+      总结性文章
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-10">
+        总结性文章
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../summary_article/string_vulnerability/" title="C 语言中字符分割有关的函数与常见字符串复制溢出点" class="md-nav__link">
+      C 语言中字符分割有关的函数与常见字符串复制溢出点
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      硬件安全
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        硬件安全
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../hardware_security/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      工具库
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        工具库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tools_lib/" title="概述" class="md-nav__link">
+      概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../tools_lib/firmware_tools/" title="固件安全工具" class="md-nav__link">
+      固件安全工具
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#powerpc" class="md-nav__link">
+    PowerPC 概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powerpc_1" class="md-nav__link">
+    PowerPC 汇编介绍
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    寄存器
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    通用寄存器的介绍以及用途
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    专用寄存器的介绍以及用途
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    常见汇编指令操作码
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    赋值语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    存储指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    加载指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    转移/跳转指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    其他指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    函数调用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ida" class="md-nav__link">
+    IDA 汇编代码例子
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    函数初始化汇编语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    逻辑处理一
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    逻辑处理二
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    函数末尾
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>系统架构特点</h1>
+                
+                <blockquote>
+<p>w0lfzhang@HatLab</p>
+</blockquote>
+<div class="toc">
+<ul>
+<li><a href="#powerpc">PowerPC 概述</a></li>
+<li><a href="#powerpc_1">PowerPC 汇编介绍</a><ul>
+<li><a href="#_1">寄存器</a><ul>
+<li><a href="#_2">通用寄存器的介绍以及用途</a></li>
+<li><a href="#_3">专用寄存器的介绍以及用途</a></li>
+</ul>
+</li>
+<li><a href="#_4">常见汇编指令操作码</a><ul>
+<li><a href="#_5">赋值语句</a></li>
+<li><a href="#_6">存储指令</a></li>
+<li><a href="#_7">加载指令</a></li>
+<li><a href="#_8">转移/跳转指令</a></li>
+<li><a href="#_9">其他指令</a></li>
+</ul>
+</li>
+<li><a href="#_10">函数调用</a></li>
+</ul>
+</li>
+<li><a href="#ida">IDA 汇编代码例子</a><ul>
+<li><a href="#_11">函数初始化汇编语句</a></li>
+<li><a href="#_12">逻辑处理一</a></li>
+<li><a href="#_13">逻辑处理二</a></li>
+<li><a href="#_14">函数末尾</a></li>
+</ul>
+</li>
+<li><a href="#_15">总结</a></li>
+</ul>
+</div>
+<h2 id="powerpc">PowerPC 概述<a class="headerlink" href="#powerpc" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>PowerPC（Performance Optimization With Enhanced RISC – Performance Computing，有时简称 PPC）是一种精简指令集（RISC）架构的中央处理器（CPU），其基本的设计源自 IBM（国际商用机器公司）的POWER（Performance Optimized With Enhanced RISC）。</p>
+</blockquote>
+<p>PowerPC处理器有广泛的实现范围，包括从诸如 Power4 那样的高端服务器CPU 到嵌入式 CPU 市场（任天堂 Gamecube 使用了 PowerPC），在通信、工控、航天国防等要求高性能和高可靠性的领域得到广泛应用，是一颗“贵族的芯片”。</p>
+<h2 id="powerpc_1">PowerPC 汇编介绍<a class="headerlink" href="#powerpc_1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">寄存器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>PowerPC 的处理器有32个（32 位或 64 位）GPR（通用寄存器）以及诸如 PC（程序计数器，也称为 IAR/指令地址寄存器或 NIP/下一指令指针）、LR（链接寄存器）、CR（条件寄存器）等各种其它专用寄存器。有些 PowerPC CPU 还有 32 个 64 位 FPR（浮点寄存器）。</p>
+<h4 id="_2">通用寄存器的介绍以及用途<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>PPC 汇编通用寄存器范围从 r0 到 r31，各个寄存器的具体功能如下表：</p>
+<table>
+<thead>
+<tr>
+<th>寄存器名</th>
+<th>寄存器功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r0</td>
+<td>在函数开始（function prologs）时使用。</td>
+</tr>
+<tr>
+<td>r1</td>
+<td>堆栈指针，相当于 IA32 架构中的esp寄存器，IDA pro 中把这个寄存器反汇编标识为 sp。</td>
+</tr>
+<tr>
+<td>r2</td>
+<td>内容表（toc）指针，IDA pro 中把这个寄存器反汇编标识为 rtoc。系统调用时，它包含系统调用号。</td>
+</tr>
+<tr>
+<td>r3</td>
+<td>作为调用函数的第一个参数和函数的返回值。</td>
+</tr>
+<tr>
+<td>r4 - r10</td>
+<td>函数或系统调用开始的参数。</td>
+</tr>
+<tr>
+<td>r11</td>
+<td>用在指针的调用和当作一些语言的环境指针。</td>
+</tr>
+<tr>
+<td>r12</td>
+<td>它用在异常处理和 glink（动态连接器）代码。</td>
+</tr>
+<tr>
+<td>r13</td>
+<td>保留作为系统线程 ID。</td>
+</tr>
+<tr>
+<td>r14 - r31</td>
+<td> 作为本地变量，非易失性。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_3">专用寄存器的介绍以及用途<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>除了一些通用寄存器，在 PPC 中还存在一些比较特殊的专用寄存器：</p>
+<table>
+<thead>
+<tr>
+<th>寄存器名</th>
+<th>寄存器功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lr</td>
+<td>链接寄存器，它用来存放函数调用的返回地址。</td>
+</tr>
+<tr>
+<td>ctr</td>
+<td>计数寄存器，它用来当作循环计数器，会随特定转移操作而递减。</td>
+</tr>
+<tr>
+<td>xer</td>
+<td>定点异常寄存器，存放整数运算操作的进位以及溢出信息。</td>
+</tr>
+<tr>
+<td>msr</td>
+<td>机器状态寄存器，用来配置微处理器的设定。</td>
+</tr>
+<tr>
+<td>cr</td>
+<td>条件寄存器，它分成8个4位字段，cr0-cr7，它反映了某个算法操作的结果并且提供条件分支的机制。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">常见汇编指令操作码<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">赋值语句<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>指令名</th>
+<th>指令作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>li rA, imm</td>
+<td>将立即数的值赋值给 rA 寄存器</td>
+</tr>
+<tr>
+<td>lwz rA, d(rB)</td>
+<td>将 <code>rB+d</code> 地址取值存储到 rA</td>
+</tr>
+<tr>
+<td>lis rA, imm</td>
+<td>将寄存器的值先左移 4 位，并赋值给 rA 寄存器</td>
+</tr>
+<tr>
+<td>mr rA, rB</td>
+<td>将 rB 寄存器的值赋值给 rA 寄存器</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_6">存储指令<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>存储指令的作用使用第一个操作数的内容存储到第二个操作数的内容地址中。PPC 指令中一些常见的存储指令：</p>
+<p><img alt="" src="http://10.20.152.151/server/../Public/Uploads/2020-05-14/5ebca3ef79fc7.png" /></p>
+<ul>
+<li>如这里对 <code>stb rS, d(rA)</code> 存储指令的理解：[rA + d] = rS，即将 rS 寄存器的内容存储到 <code>rA + d</code> 表示的内存地址中。</li>
+</ul>
+<h4 id="_7">加载指令<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>加载指令与存储指令类似，只是将数据存储位置换了一个方向，即将第二个操作数的内容存储到第一个操作数的内容地址中。一些常见的加载指令：</p>
+<p><img alt="" src="http://10.20.152.151/server/../Public/Uploads/2020-05-14/5ebca49e90436.png" /></p>
+<ul>
+<li>如这里对 <code>lbz rD, d(rA)</code> 加载指令的理解：rD = [rA + d]，即将 <code>rA + d</code> 内存地址中的值存储到 rD 寄存器中。</li>
+</ul>
+<h4 id="_8">转移/跳转指令<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>PPC 的跳转指令主要分为以下几种：</p>
+<div class="codehilite"><pre><span></span><code>b               无条件转移
+bl              函数调用
+blr             函数返回，跳转到 lr 寄存器存储的地址中
+bctrl           jump to ctr 寄存器
+</code></pre></div>
+
+<ul>
+<li>特殊寄存器传送指令</li>
+</ul>
+<p><img alt="" src="http://10.20.152.151/server/../Public/Uploads/2020-05-14/5ebca7f698e82.png" /></p>
+<h4 id="_9">其他指令<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>指令名</th>
+<th>指令作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mflr rA</td>
+<td>Move From Link Register，将 lr 寄存器的值存储到 rA 寄存器中，一般用于函数开头</td>
+</tr>
+<tr>
+<td>mtlr rA</td>
+<td>与 mflr 指令相反，将 rA 寄存器的值存储到 lr 寄存器中，一般用于函数结尾的返回</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">函数调用<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>powerpc 函数调用跟 arm，mips 架构指令集有些类似。函数传参从 r3 寄存器开始，r3 - r8 寄存器依次存放需要传入的参数顺序。</p>
+<p>当调用某个函数时，用到以下指令：</p>
+<div class="codehilite"><pre><span></span><code>bl func         // 跳转并链接
+</code></pre></div>
+
+<p>该指令类似 mips 架构的 <code>jalr</code> 指令，会保存该指令下一条指令地址到 lr 寄存器中，然后 jump 到 func 函数。在 func 函数开头，会存储 lr 寄存器的值到 r0 寄存器中，接着会将 r0 寄存器的值保存到栈中。<strong>这一系列的步骤就相当于保存调用者函数的返回地址到栈上。</strong></p>
+<ul>
+<li>举个例子：</li>
+</ul>
+<p><div class="codehilite"><pre><span></span><code>func:
+
+stwu      r1, -0x20(r1)             // 定义 r1 栈寄存器
+mflr      r0                             // 将 lr 寄存器的值存入 r0 寄存器
+stw       r28, 0x10(r1)
+stw       r29, 0x14(r1)
+stw       r0, 0x24(r1)               // 将 r0 寄存器的值存储到 r1+0x24 内存地址中
+......
+</code></pre></div>
+然后在函数返回时，会将 r0 从栈中取出，然后赋值给 lr，然后返回：</p>
+<div class="codehilite"><pre><span></span><code>lwz       r0, 0x24(r1)              // 将返回地址 从 r1+0x24 的内存地址中取出，并赋值给 r0 寄存器
+mtlr      r0                            // 将 r0 寄存器的值赋值给 lr 寄存器
+lwz       r28, 0x10(r1)
+lwz       r29, 0x14(r1)
+addi      r1, r1, 0x20
+blr                                         // 跳转到 lr 寄存器存储的地址中，表示函数返回
+</code></pre></div>
+
+<p>所以在 ppc 的栈溢出利用过程中，我们需要覆盖保存 r0 的栈地址的地方。这个保存 r0 的栈地址相对 r1 的偏移是不确定的，需要自己静态分析或动态调试发现。</p>
+<h2 id="ida">IDA 汇编代码例子<a class="headerlink" href="#ida" title="Permanent link">&para;</a></h2>
+<p>以某个 Vxworks 系统的固件程序在 IDA 中的汇编结果为例，实际查看一下常见 PPC 汇编语句的作用：</p>
+<div class="codehilite"><pre><span></span><code>ROM:001D3FE4
+ROM:001D3FE4                         # =============== S U B R O U T I N E =======================================
+ROM:001D3FE4
+ROM:001D3FE4
+ROM:001D3FE4                         loginUserVerify:                        # CODE XREF: FTP_User_Add+1EC↑p
+ROM:001D3FE4                                                                 # add_ftp_user+164↑p ...
+ROM:001D3FE4
+ROM:001D3FE4                         .set back_chain, -0x70
+ROM:001D3FE4                         .set var_68, -0x68
+ROM:001D3FE4                         .set var_10, -0x10
+ROM:001D3FE4                         .set var_C, -0xC
+ROM:001D3FE4                         .set var_4, -4
+ROM:001D3FE4                         .set sender_lr,  4
+ROM:001D3FE4
+ROM:001D3FE4 94 21 FF 90                             stwu      r1, back_chain(r1)
+ROM:001D3FE8 7C 08 02 A6                             mflr      r0
+ROM:001D3FEC 93 E1 00 6C                             stw       r31, 0x70+var_4(r1)
+ROM:001D3FF0 90 01 00 74                             stw       r0, 0x70+sender_lr(r1)
+ROM:001D3FF4 7C 7F 1B 78                             mr        r31, r3
+ROM:001D3FF8 7C 83 23 78                             mr        r3, r4
+ROM:001D3FFC 38 81 00 08                             addi      r4, r1, 0x70+var_68
+ROM:001D4000 48 00 06 91                             bl        sub_1D4690
+ROM:001D4004 2C 83 FF FF                             cmpwi     cr1, r3, -1
+ROM:001D4008 40 86 00 0C                             bne       cr1, loc_1D4014
+ROM:001D400C 38 60 FF FF                             li        r3, -1
+ROM:001D4010 48 00 00 5C                             b         loc_1D406C
+ROM:001D4014                         # ---------------------------------------------------------------------------
+ROM:001D4014
+ROM:001D4014                         loc_1D4014:                             # CODE XREF: loginUserVerify+24↑j
+ROM:001D4014 3D 20 00 33                             lis       r9, dword_3297A4@ha
+ROM:001D4018 80 69 97 A4                             lwz       r3, dword_3297A4@l(r9)
+ROM:001D401C 7F E4 FB 78                             mr        r4, r31
+ROM:001D4020 38 A1 00 60                             addi      r5, r1, 0x70+var_10
+ROM:001D4024 38 C1 00 64                             addi      r6, r1, 0x70+var_C
+ROM:001D4028 4B FC A8 C5                             bl        symFindByName
+ROM:001D402C 2C 83 FF FF                             cmpwi     cr1, r3, -1
+ROM:001D4030 40 86 00 10                             bne       cr1, loc_1D4040
+ROM:001D4034 3C 60 00 36                             lis       r3, 0x36
+ROM:001D4038 60 63 00 01                             ori       r3, r3, 1 # 0x360001
+ROM:001D403C 48 00 00 20                             b         loc_1D405C
+ROM:001D4040                         # ---------------------------------------------------------------------------
+ROM:001D4040
+ROM:001D4040                         loc_1D4040:                             # CODE XREF: loginUserVerify+4C↑j
+ROM:001D4040 80 61 00 60                             lwz       r3, 0x70+var_10(r1)
+ROM:001D4044 38 81 00 08                             addi      r4, r1, 0x70+var_68
+ROM:001D4048 4B FA 33 39                             bl        strcmp
+ROM:001D404C 2C 83 00 00                             cmpwi     cr1, r3, 0
+ROM:001D4050 41 86 00 18                             beq       cr1, loc_1D4068
+ROM:001D4054 3C 60 00 36                             lis       r3, 0x36
+ROM:001D4058 60 63 00 03                             ori       r3, r3, 3 # 0x360003
+ROM:001D405C
+ROM:001D405C                         loc_1D405C:                             # CODE XREF: loginUserVerify+58↑j
+ROM:001D405C 4B FC 05 CD                             bl        errnoSet
+ROM:001D4060 38 60 FF FF                             li        r3, -1
+ROM:001D4064 48 00 00 08                             b         loc_1D406C
+ROM:001D4068                         # ---------------------------------------------------------------------------
+ROM:001D4068
+ROM:001D4068                         loc_1D4068:                             # CODE XREF: loginUserVerify+6C↑j
+ROM:001D4068 38 60 00 00                             li        r3, 0
+ROM:001D406C
+ROM:001D406C                         loc_1D406C:                             # CODE XREF: loginUserVerify+2C↑j
+ROM:001D406C                                                                 # loginUserVerify+80↑j
+ROM:001D406C 80 01 00 74                             lwz       r0, 0x70+sender_lr(r1)
+ROM:001D4070 7C 08 03 A6                             mtlr      r0
+ROM:001D4074 83 E1 00 6C                             lwz       r31, 0x70+var_4(r1)
+ROM:001D4078 38 21 00 70                             addi      r1, r1, 0x70
+ROM:001D407C 4E 80 00 20                             blr
+ROM:001D407C                         # End of function loginUserVerify
+</code></pre></div>
+
+<h3 id="_11">函数初始化汇编语句<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>0x01D3FE4 地址定义为 loginUserVerify 函数的开头。</p>
+<ol>
+<li>
+<p>首先 0x01D3FE4 地址处的 <code>stwu      r1, back_chain(r1)</code> 指令，将 r1 寄存器（表示栈寄存器）的值存储到 r1-0x70 地址处，此条指令相当于保存原来函数的栈环境，类似与 x86 中 <code>push ebp</code> 指令的操作。</p>
+</li>
+<li>
+<p>接着 <code>mflr      r0</code> 指令，将 lr 寄存器的值存储到 r0 寄存器中，在地址 0x01D3FF0 处，将 r0 寄存器的值存储到 r1+0x74 的内存地址处</p>
+</li>
+</ol>
+<h3 id="_12">逻辑处理一<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>在 0x01D3FF4 到 0x01D4000 地址段中，对 r3 和 r4 寄存器进行赋值，并使用 bl 指令调用了 <code>sub_1D4690</code> 函数，针对于参数的传递，可以表示成 <code>sub_1D4690(r4,r1+0x8)</code>。</p>
+<p>在 0x01D4004 到 0x01D4010 地址段中，进行了分支判断和条件跳转，首先 <code>cmpwi</code> 指令，比较 r3 寄存器的值是否为 -1，跳转到 loc_1D4014 代码段中，否则跳转到 loc_1D406C 代码段中（也就是函数的结尾），表示此分支为结束分支。</p>
+<p>用伪 C 代码来表示这里的代码如下：</p>
+<div class="codehilite"><pre><span></span><code>if(sub_1D4690(r4,r1+0x8) != -1){
+    goto loc_1D4014;
+}else{
+    return -1;
+}
+</code></pre></div>
+
+<h3 id="_13">逻辑处理二<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>在 0x01D4014 到 0x01D403C 地址段中，同样进行了函数调用、分支判断和条件跳转，先对 r3、r4、r5、r6 四个寄存器进行赋值，接着调用 <code>symFindByName</code> 函数，即调用 <code>symFindByName(dword_3297A4,r31,r1+0x60,r1+0x64)</code>。</p>
+<p>比较函数的返回值，如果为 -1 的话跳转到 0x01D405C 地址处，调用 <code>errnoSet(0x360001)</code> 函数，并 <code>jmp loc_1D405C</code> 进行函数返回。不为 -1 的话跳转到 0x01D4040 代码段处，在此代码段中，调用了 <code>strcmp</code> 函数，比较 <code>strcmp</code> 函数的返回结果，并进行分支跳转。</p>
+<p>整个函数的伪 C 代码可以表示为：</p>
+<div class="codehilite"><pre><span></span><code>int loginUserVerify(r4,r4){
+    if(sub_1D4690(r4,r1+0x8) != -1){
+        if(symFindByName(dword_3297A4,r31,r1+0x60,r1+0x64) == -1){
+            errnoSet(0x360001);
+            return -1;
+        }else{
+            if(strcmp([r1+0x60],r1+0x8)==0){
+                return 0;
+            }else{
+                errnoSet(0x360003);
+                return -1;
+            }
+        }
+    }else{
+        return -1;
+    }
+}
+</code></pre></div>
+
+<h3 id="_14">函数末尾<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>0x01D406C 到 0x01D407C 内存地址定义为函数末尾代码段，首先 <code>lwz</code> 指令将原本存储在栈上的返回地址取出，赋值给 r0 寄存器， 并使用 <code>mtlr</code> 命令将 r0 寄存器的值复制到 lr 寄存器中，接着 <code>addi      r1, r1, 0x70</code> 语句恢复调用前的栈空间，最后 <code>blr</code> 指令相当于 <code>jmp lr</code> 跳转回返回地址处，进行函数返回。</p>
+<h2 id="_15">总结<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>PPC 的汇编架构本质是属于 RISC 类的指令集，许多汇编指令的操作和运算和 MIPS 指令集大同小异，分析时只需对照着学习、分析即可。</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../ARM/sof_tips/" title="栈溢出利用技巧" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                栈溢出利用技巧
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../../environment_building/Mips_fuzzing_environment_building/" title="MIPS fuzzing 环境搭建" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                MIPS fuzzing 环境搭建
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 HatLab Team
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/DasSecurity-Labs" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/H4looo" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.c33a9706.js"></script>
+      
+        
+        
+          
+          <script src="../../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../../../../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../../../../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.1",url:{base:"../../../.."}})</script>
+      
+    
+  </body>
+</html>
