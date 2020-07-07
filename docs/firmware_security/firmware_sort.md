@@ -45,7 +45,7 @@
 
 这里以 Vxworks 为例，使用 binwalk 进行固件的解析时，一般会有一些特征信息，如 `VxWorks WIND kernel version "2.5"` 等：
 
-![](./img/pic3.png)
+![](./img/pic4.png)
 
 ## 参考文献
 

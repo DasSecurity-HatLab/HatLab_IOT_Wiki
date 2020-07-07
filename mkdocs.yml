@@ -31,24 +31,69 @@ nav:
 #        - ZigBee 安全:
 #            - 概述: index.md
 
-
     - 固件安全:
         - 概述: firmware_security/index.md
         - 固件分类: firmware_security/firmware_sort.md
         - 固件获取: 
-            - 概述: firmware_security/firmware_obtain/index.md
-            - 官网下载: firmware_security/firmware_obtain/website_download.md
-            - 更新抓包获取: firmware_security/firmware_obtain/update_captrue.md
-  
-        - IOT 设备指令集特点:
+          - 概述: firmware_security/firmware_obtain/index.md
+          - 官网下载: firmware_security/firmware_obtain/website_download.md
+          - 更新抓包获取: firmware_security/firmware_obtain/update_captrue.md
+          - 其他途径: firmware_security/firmware_obtain/other.md
+          - 硬件方法提取:
+              - 硬件方法提取概述: firmware_security/firmware_obtain/hardware_approach/readme.md
+              - MCU 转储固件: firmware_security/firmware_obtain/hardware_approach/mcu_dump.md
+              - 使用烧写器/编程器提取固件: firmware_security/firmware_obtain/hardware_approach/programmer_dump.md
+              - JTAG 接口提取固件: firmware_security/firmware_obtain/hardware_approach/jtag_dump.md
+              - 某摄像头固件提取: firmware_security/firmware_obtain/hardware_approach/camera_dump.md
+              - 某款路由器固件提取: firmware_security/firmware_obtain/hardware_approach/router_dump.md
+        - 固件处理:
+          - 固件解包: 
+            - binwalk: x
+          - 固件加密:
+            - 固件加密的常见处理方法: x
+          - 固件重打包:
+            - 概述: x
+            - 固件格式概述及修改方法: x
+        - 固件分析:
+          - 概述: firmware_security/firmware_analysis/readme.md
+          - Linux 文件系统分析步骤: firmware_security/firmware_analysis/linux_filesystem_analysis.md
+          - VxWorks 文件系统分析: firmware_security/firmware_analysis/vxworks_filesystem_analysis.md
+          - 路由器固件分析过程常用字段: x
+          - 裸机固件分析:
+            - 裸机程序库函数识别与恢复: firmware_security/firmware_analysis/singlechip_firmware_analysis/library_function_distinguish.md
+            - 裸机程序二进制分析: firmware_security/firmware_analysis/singlechip_firmware_analysis/binary_analysis.md
+        - 固件指令集特点:
+          - MIPS 架构指令特点: 
             - 敏感函数定位技巧: firmware_security/IOT_instructions_charac/found_danger_func.md
             - 栈溢出利用技巧: firmware_security/IOT_instructions_charac/stackoverflow_exploit.md
             - MIPS shellcode 指令编写技巧: firmware_security/IOT_instructions_charac/MIPS_shellcode.md
+          - ARM 架构指令特点:
+            - 系统特点解析: firmware_security/IOT_instructions_charac/ARM/readme.md
+            - 固件逆向技巧: x
+            - 敏感函数定位技巧: x
+            - 栈溢出利用技巧: firmware_security/IOT_instructions_charac/ARM/sof_tips.md
+            - shellcode 编写技巧: x
+          - POWERPC 架构指令特点:
+            - 系统架构特点: firmware_security/IOT_instructions_charac/POWERPC/readme.md
+            - 固件逆向技巧: x
         - 环境搭建:
             - MIPS fuzzing 环境搭建: firmware_security/environment_building/Mips_fuzzing_environment_building.md
-
-        - 漏洞分析:
+        - 固件安全实例:
+          - 路由器安全:
             - TPLINK_WR841N 路由器漏洞分析: firmware_security/vuln_analyse/TL_WR841n_vuln_analyse.md
+          - 摄像头安全:
+            - 雄迈 IPC 摄像头后门漏洞分析: x
+          - 通用组件安全:
+            - pppd 栈溢出漏洞分析（cve-2020-8597）: x
+        - 固件安全工具:
+          - 概述: firmware_security/firmware_security_tools/readme.md
+          - 原创工具/脚本:
+            - 一款基于 unicorn 动态指令执行的 IDA 插件: firmware_security/firmware_security_tools/IDA_unicorn_base_tool.md
+            - 一款基于 firmadyne 优化的固件模拟工具: firmware_security/firmware_security_tools/firmware_simulation.md
+            - 基于 frimadyne 改进的 fat.py 脚本: firmware_security/firmware_security_tools/firmadyne_fat.md
+
+          - 第三方工具使用指南:
+            - 协议 fuzzing 之 boofuzz 使用指南: x
 
         - 总结性文章:
             - C 语言中字符分割有关的函数与常见字符串复制溢出点: firmware_security/summary_article/string_vulnerability.md
