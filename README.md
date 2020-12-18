@@ -9,7 +9,7 @@
 
 ## Wiki 链接
 
-https://dassecurity-labs.github.io/HatLab_IOT_Wiki/
+https://dassecurity-hatlab.github.io/HatLab_IOT_Wiki/
 
 ### 在 IOT 安全知识库中，你可以了解/获取到：
 
